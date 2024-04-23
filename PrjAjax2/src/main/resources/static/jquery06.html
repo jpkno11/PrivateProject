@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script>
+      //객체 생성자 함수 : class 문법 이전에 사용했던
+      // 자바스크립트의 생성자와 객체를 생성 문법 
+     function Students(num,name,kor,eng,mat){
+         this.num = num;
+         this.name = name;
+         this.kor = kor;
+         this.eng = eng;
+         this.mat = mat;
+         getTot = function(){
+           return this.kor + this.eng + this.mat;
+         };
+         getAvg = function(){
+              // 소수이하 3자리로 출력
+               return (getTot()/3).tofixed(3);
+               let kor = parseInt(this.kor); 
+               let eng = parseInt(this.eng); 
+               let mat = parseInt(this.mat); 
+               return kor + eng+ mat
+         };
+         this.toTr = function(){
+             let tr= '<tr>';
+             tr += '<td>${this.num}</td>';
+             tr += '<td>${this.name}</td>';
+             tr += '<td>${this.kor}</td>';
+             tr += '<td>${this.eng}</td>';
+             tr += '<td>${this.mat}</td>';
+             tr += '<td>${this.getTot()}</td>';
+             tr += '<td>${this.Avg()}</td>';
+             tr += '</tr>';
+             
+        	 return tr;
+         }
+      }
+     let students = []; // 배열 생성 
+     //이벤트 핸들러 : 이벤트와 연결된 함수
+      //출력함수
+     function header(){
+         let head = '';
+         head += '<tr>';
+         head += '<td>번호</td>';
+         head += '<td>이름</td>';
+         head += '<td>국어</td>';
+         head += '<td>영어</td>';
+         head += '<td>수학</td>';
+         head += '<td>총점</td>';
+         head += '<td>평균</td>';
+         head += '</tr>';
+      return head;
+     }
+  function display(students) {
+       $('tr').css ({
+            backgroundColor:  'black',
+            color          : 'white'
+       })
+         $('tr:first').css({
+'boder-color': 'white'
+  })
+  
+  
+	  let html= '<table>';
+	  html +=header();
+	  html +=header();
+	  for (let student of students){
+         html += student.toTr();
+	  }
+	   html= '<table>';
+     $('#output').html(html);
+     }
+     $(function(){
+      $('button').on('click',function(){   
+          let  num = $('#num').val();
+          let  name = $('#name').val();
+          let  kor  = $('#kor').val();
+          let  eng = $('#eng').val();
+          let  mat = $('#mat').val();
+       students.push(new Student(num,name,kor,eng,mat)) //배열 을 값을 저장
+               
+            //결과 출력
+            display(students);
+      })
+  })
+</script>
+</head>
+<body>
+  <filedset>
+     <legend>성적처리</legend> 
+    번호: <input type="text" id="num"/><br>
+    이름: <input type="text" id="name"/><br>
+    국어: <input number="number" id="kor"min="0" max="100" value="100"/><br>
+    영어: <input number="number" id="Eng"min="0" max="100" value="100"/><br>
+    수학: <input number="number" id="Mat"min="0" max="100" value="100"/><br>
+    <button>Save</button>
+     
+      
+  </fieldset>
+  <div id="output"></div>
+</body>
+</html>
