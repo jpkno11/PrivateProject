@@ -6,20 +6,21 @@
 <Style>
 .data{
 border: 1px solid blue;
-border-radious:10px;
+border-radius:10px;
 float: left;
 width: 200px;
 margin: 20px;
 padding : 10px;
 }
-</Style>
+</style>
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <script>
 function jsonhtml(json){
   let html = '';
   html += '<div class="data">';
   html += '<h2>id:'+ json.id + '</h2>';
-  html += '<div>title' + json.title+'</idv>';
+  html += '<div>userID:' +json.userId +'</div>';
+  html += '<div>title' + json.title+'</div>';
   html += '<div>Body' + json.body+'</idv>';
   html += '</div>';
 	return html;
@@ -28,7 +29,8 @@ $(function(){
   let url= ''
     $('button').on('click',function(e){
          let method =$('select>opetion:selected').val();
-       switch(method){
+         //alert(method);
+         switch(method){
        case 'GET':
         url ='https://jsonplaceholder.typicode.com/posts/1'+$('#id').val()
         
@@ -41,7 +43,7 @@ $(function(){
          url: url,
          data : {},
          ype : 'GET',
-         dataType:"json"  
+         dataType:'json'
         })
             .done(function(json) {
              // $(대상).append(html태그)
@@ -107,7 +109,7 @@ $(function(){
      	            	})
 
        
-       }
+       } // switch end
     })  
 
 })
@@ -116,19 +118,20 @@ $(function(){
 
 </head>
 <body>
+   <fieldset>
+   <legend>성적처리</legend>
     <select id = "">
     <option value ="Get">GET</option>
     <option value ="Post">POST</option>
     <option value ="Patch">PATCH</option>
     <option value ="Delete">DELETE</option>
    
-    </select>
+    </select><br/>
     id: <input type="number"  id="id"value="1"/><br>
     title: <input type="text" id="title"value="하하하"/><br>
     body: <input type="text"  id="body"value="hahaha"/><br>
     <button>Send</button>
-     
-      
+     </fieldset>
    <div id="output"></div>
 </body>
 </html>

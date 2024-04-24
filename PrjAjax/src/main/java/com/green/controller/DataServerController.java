@@ -1,6 +1,10 @@
 package com.green.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.green.dto.UserDto;
@@ -32,6 +36,28 @@ public class DataServerController {
 		return   user;  
 	}
 	
-	
+	@RequestMapping("/ajax5")
+	@ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, 
+       produces = MediaType.APPLICATION_JSON_VALUE)
+	public  UserDto  ajax5() {
+		String   userid   = "karin";
+		String   userpass = "1234";
+		String   username = "카리나";
+		UserDto  user   = new UserDto(userid, userpass, username);
+		return   user;  
+	}
+
+	@RequestMapping("/ajax6")
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(consumes = MediaType.APPLICATION_XML_VALUE,
+       produces = MediaType.APPLICATION_XML_VALUE)
+	public  UserDto  ajax6() {
+		String   userid   = "karin";
+		String   userpass = "1234";
+		String   username = "카리나";
+		UserDto  user   = new UserDto(userid, userpass, username);
+		return   user;  
+	}
 	
 }

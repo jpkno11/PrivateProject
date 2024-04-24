@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 // @Controller + @RequestMapping + @responseBody 
 //   : .jsp, .mustache츨 찾지않고 data를 출력한다 : 새로운 페이지에
 // @Controller +  @ResponseBody : @RestController
-
 //  모든 함수에 @ResponseBody 가 적용된다
 //  @Controller     : view 파일을 리턴하고
 //  @RestController : data를 리턴한다
