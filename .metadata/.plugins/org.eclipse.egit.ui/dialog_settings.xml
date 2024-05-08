@@ -6,14 +6,22 @@
 	<list key="CommitDialog.committerValues">
 		<item value="jpkno11 &lt;jpkno66@naver.com&gt;"/>
 	</list>
+	<list key="EGit.KnownHosts">
+		<item value="git.eclipse.org"/>
+		<item value="github.com"/>
+		<item value="bitbucket.org"/>
+	</list>
 	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
-		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="false"/>
-		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="499,500"/>
+		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="true"/>
+		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="500,500"/>
 		<item key="STAGING_SASH_FORM_WEIGHT" value="500,500"/>
 		<item key="sortItemState" value="false"/>
 	</section>
 	<section name="GitCommitMessageComponent">
 		<list key="D:\dev1\springbootJsp\PrjJpa04\.git">
+			<item value="empty"/>
+		</list>
+		<list key="D:\dev1\springbootJsp\PrjJpa05_securityloginlogout\.git">
 			<item value="empty"/>
 		</list>
 	</section>

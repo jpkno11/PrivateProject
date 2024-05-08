@@ -1,4 +1,5 @@
 package com.green.controller;
+S
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,8 +46,11 @@ private ArticleRepository articleRepository;
  public String index() {
 	 
 	 //1. 모든데이터 가져오기
+	  	List<Article> aritcleEntityList = articleRepository.findAll()
 	 //2. 모델에 데이터 등록하기
 	 //3. 뷰페이지 설정하기
 	  return "";
  }
+
+
 }
