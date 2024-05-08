@@ -9,6 +9,8 @@ import com.green.Entity.Article;
 public interface ArticleRepository extends CrudRepository<Article,Long> {
 	@Override
 	ArrayList<Article> findAll();
+
+	
 	
  
 }
