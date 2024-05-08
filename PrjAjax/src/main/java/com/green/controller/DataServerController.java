@@ -27,7 +27,9 @@ public class DataServerController {
 	// 자바객체 : new UserDto(userid, userpass, username)
 	// json 라이브러리(jacksonbinder 라이브러리)가 작동함 : 
 	// js객체   : {"userid":"karin","userpass":"1234","username":"카리나"}
-	@RequestMapping("/ajax4")
+	@RequestMapping(path = "/ajax4", 
+			 produces = MediaType.APPLICATION_XML_VALUE )
+	//		produces = "application/xml;charset=utf-8")
 	public  UserDto  ajax4() {
 		String   userid   = "karin";
 		String   userpass = "1234";

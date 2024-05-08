@@ -5,44 +5,58 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <script>
-//data 
-let student = {
-     num  : 12,
-     name :'민경',
-     age  :22,
-     toString : function(){
-         let txt= `번호:${this.num},이름:${this.name},나이:${this.age}`
-    	 return txt; 
-     }
-}
+  let  student = {
+      num  : 13,
+      name : '민경',
+      age  : 22,
+      toString  : function() {
+ 	       let txt  = '번호:' + this.num;            
+ 	       txt     += '이름:' + this.name;            
+ 	       txt     += '나이:' + this.age;            
+           return  txt;
+      } 
+  }
 
   $(function() {
-      console.dir(student);
-      $('button').on('click',function(){  //버튼을 누르면 데이터가 뜬다
-           let obj2 = JSON.stringify({"num":12,"name":"민경","age":22});
-            
-            let a; // 변수 초기값이 없으면 undfined
-           $('#output').append(obj + '<br>');
-           $('#output').append(obj2.num +  '<br>');
-           $('#output').append(obj.num +  '<br>');
-           $('#output').append(typeof(obj) +  '<br>');
-           $('#output').append(typeof(obj2) +  '<br>');
-           $('#output').append(obj4.name +  '<br>');
-            //--------------------------------------
-            let s = JSON.stringify(student);
-            $('#output').apeend(s+"<br>");
-            //1.함수가 사라졌다 2.모든속성에 "num" 가 붙는다
-                // string : {"num":12,"name":"민경","age":22}
-            
-                
-           
-      })   
+	  console.dir(student)	 
+	  $('button').on('click', function() {
+          //let txt  = student.toString();          
+          let obj  = JSON.stringify(student) 
+          // JS Object => String {"num":13,"name":"민경","age":22}
+          let obj2 = {"num":14,"name":"민경2","age":20};
+          let obj3 = '{"num":14,"name":"민경2","age":20}'; // string
+          let obj4 = JSON.parse(obj3);                    // string -> object
+          let a; // 변수 초기값이 없으면  undefined
+	      $('#output').append( a           + '<br>'  );  // undefined          
+	      $('#output').append( obj         + '<br>'  );            
+	      $('#output').append( obj.num     + '<br>'  );  // undefined         
+	      $('#output').append( obj2.num    + '<br>'  );            
+	      $('#output').append( typeof(obj) + '<br>'  );  
+	        // string : '{"num":13,"name":"민경","age":22}' 
+	      $('#output').append( typeof(obj2) + '<br>'  );
+	        // object :  {"num":13,"name":"민경","age":22}
+	      $('#output').append( obj4.name + '<br>'  );
+	      
+	      //-----------------------
+	      let s = JSON.stringify(student);
+	      $('#output').append(s + "<br>");
+	      // 1. 함수가 사라졌다, 2. 모든 속성에 "num" 가 붙는다
+	      // {"num":13,"name":"민경","age":22}
+	      
+      })
   })
 </script>
-        
 </head>
 <body>
-   <button>출력</button>
-   <div id ="output"></div>
+  <button>출력</button>
+  <div id="output"></div> 
 </body>
 </html>
+
+
+
+
+
+
+
+

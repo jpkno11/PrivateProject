@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  ul { 
+      list-style:none;
+      border:1px solid  #333; 
+      margin : 20px; padding :10px;      
+      float : left;
+      border-radius: 10px;
+  }
+  li  img { width:70ox; height:100px; }
+  
+</style>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <button>Ok</button>
+  <div id="output"></div>
+  
+  <script>
+    const  btnOkEl = document.querySelector('button')
+    btnOkEl.addEventListener('click', function( e ) {
+        console.dir(axios);
+        //alert('ok');
+        let url = 'https://reqres.in/api/users?page=2'
+        axios.get(url)
+         .then(function(response) {
+            // axios 는 서버결과({}) 에 항목(객체)을 추가한다
+            // 실제 도착한 데이터는 response.data 안에 존재            
+            console.log(response)  
+            console.log(response.data)  
+            
+            // 서버가 보낸준 자료 : 
+            /*  response.data
+             {  
+                page:      2,
+                per_page : 6,  
+                total :    12,
+                data : [
+                	 {"id":7, "email":"", ....},
+                	 {"id":8, "email":"", ....},
+                	 {"id":9, "email":"", ....},
+                	 {"id":10, "email":"", ....},
+                	 {"id":11, "email":"", ....},
+                	 {"id":12, "email":"", ....}                	 
+                ]
+            }
+            */
+            
+            let total     = response.data.total;
+            let page      = response.data.page;
+            let dataList  = response.data.data;  // 배열
+            const  outputEl    =  document.querySelector('#output');
+            let  html   =  '총페이지수:'  + total + "<br>" 
+            html       +=  "현재 페이지:" + page + "<hr>"
+            
+            html       +=  jsontohtml( dataList );
+            
+            outputEl.innerHTML = html;
+         })
+         .catch(function(error) {
+            console.log(error)
+         })
+        .finally(function() {
+        	console.log("항상실행") 
+        })
+    });
+    
+    function jsontohtml( dataList ) {
+
+    	/* 
+    	 // 1번.
+          for(let i=0;i<dataList.length;i++) {
+    	      let data  = dataList[i]
+    	      data.id
+          }
+          // 2번.
+          for(let i in dataList) {
+        	  let data  = dataList[i]
+    	      data.id
+          }
+          // 3번.
+          for(let data of dataList) {        	  
+    	      data.id
+          }
+          // 4번.
+          dataList.forEach( function(data, i) {
+               data.id
+          });   
+    	*/
+    	
+    	let tag  = '';
+    	dataList.forEach( (data, i) => {
+    	    tag +=  `<ul>   
+  			     <li>id:${data.id}</li>
+  			     <li>email:${data.email}</li>
+  			     <li>first_name:${data.first_name}</li>
+  			     <li>last_name:${data.last_name}</li>
+  			     <li>
+  			      <img src="${data.avatar}" alt="" />
+  			     </li>
+    		</ul>`
+        });
+    	return tag;
+    	
+    }
+  
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

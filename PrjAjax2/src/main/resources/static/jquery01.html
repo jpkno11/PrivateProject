@@ -10,11 +10,9 @@
   */
 </style>
 <script>
- 
-  /* 브라우저 tag redering 된 후에 실행 - load 이벤트가 발생하면  
+  /* 브라우저 tag rendering 된 후에 실행 - load 이벤트가 발생하면
   window.onload = function() {
      const  h1Els = document.getElementsByTagName('h1');
-     h1Els =  
      console.log(h1Els)
      h1Els[0].style.color = 'blue';
      h1Els[1].style.color = 'blue';
@@ -28,9 +26,11 @@
 <!-- jquery cdn  -->
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <script>
+   // $(funciton() {}) ==  window.onload = function() {}
    // jquery : js library 추가필요
    // $('h1') : h1 tag 를 찾아라 document.getElementsByTagName('h1')
-        
+   // $('h1 > p') : document.querySelector('h1 > p'),
+   //               document.querySelectorAll('h1 > p')
    $(document).ready( function() {    // window.onload 역할 한번가능
        $('h1').css('color', 'blue');
        $('p').css('color', 'red');
@@ -39,6 +39,9 @@
        $('#div1').html('<p>div1 입니다</p>') // innerHTML : <b>글자</b> 굵게표시
        $('#div2').text('<p>div2 입니다</p>') // innerText : <b>글자</b> &lt;&gt;
        $('div > p').css('text-decoration', 'underline' );
+       //$('input').val() // <input type="" vbalue="">
+       //$('input').attr("type") // <input type="" vbalue="">
+       //$('input').prop("type") 
        
        // 이벤트 연결
        // js => arrow funciton 화살표 함수 -> 람다식 표현
@@ -48,7 +51,8 @@
             console.log( e.target )
             // 선택한(클릭한) div tag 만 글자색을 녹색으로 변경
             $('div').css('background-color', 'green'); 
-            // alert('div1');
+            alert('div1');
+            $(this).off('click');
        })
    });
    
@@ -62,6 +66,9 @@
   <p>Lorem Ipsum</p>
   <div id="div1"></div>
   <div id="div2"></div>
+  <input type="date" />
+  <input type="butto" />
+  <input />
 </body>
 </html>
 

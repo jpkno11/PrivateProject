@@ -73,9 +73,7 @@
         	   .done( function( json ) {
                      console.log(json);
                      alert(JSON.stringify(json));
-                     let html = '<h2>' + json.id + '번으로 저장되었습니다</h2>';
-                     html += '<p>' + json.title + '</p>';
-                     html += '<p>' + json.body + '</p>';
+                     let html = '<h2>' + json.id + '번으로 저장되었습니다</h2>';                  
                      $('#output').html(html)
         	   })
         	   .fail( function(xhr, status, errorThrown) {
@@ -83,9 +81,24 @@
 				    .append("오류명: " + errorThrown + "<br>")
 				    .append("상태: " + status);
                } )
-        	  
+        	  break;
+		  case  "DELETE":
+			  $.ajax({
+                  url : 'https://jsonplaceholder.typicode.com/posts/' + $('#id').val(),
+                  type : 'DELETE'
+               })
+			  .done( function( json ) {
+                     console.log(json);
+                     let html = '<h2>' + $('#id').val() + '번이 삭제되었습니다</h2>';
+                     $('#output').html(html)
+        	   })
+        	   .fail( function(xhr, status, errorThrown) {
+				    $("#output").html("오류가 발생했습니다.<br>")
+				    .append("오류명: " + errorThrown + "<br>")
+				    .append("상태: " + status);
+               } )
 		  } // switch end
-        
+          
           
       }) 
    } ) 

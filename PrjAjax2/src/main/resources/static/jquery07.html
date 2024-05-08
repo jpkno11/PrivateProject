@@ -3,135 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<Style>
-.data{
-border: 1px solid blue;
-border-radius:10px;
-float: left;
-width: 200px;
-margin: 20px;
-padding : 10px;
-}
+<style>
+   .data {
+      border        : 1px solid blue;
+      border-radius : 10px;
+      float : left;
+      width : 200px;
+      margin : 20px;
+      padding : 10px; 
+   }
 </style>
 <script src="https://code.jquery.com/jquery.min.js"></script>
-<script>
-function jsonhtml(json){
-  let html = '';
-  html += '<div class="data">';
-  html += '<h2>id:'+ json.id + '</h2>';
-  html += '<div>userID:' +json.userId +'</div>';
-  html += '<div>title' + json.title+'</div>';
-  html += '<div>Body' + json.body+'</idv>';
-  html += '</div>';
-	return html;
-}
-$(function(){
-  let url= ''
-    $('button').on('click',function(e){
-         let method =$('select>opetion:selected').val();
-         //alert(method);
-         switch(method){
-       case 'GET':
-        url ='https://jsonplaceholder.typicode.com/posts/1'+$('#id').val()
-        
-        fetch(url)
-        .then()
-        .then()
-        .then()
-        .catch()
-        $.ajax({
-         url: url,
-         data : {},
-         ype : 'GET',
-         dataType:'json'
-        })
-            .done(function(json) {
-             // $(대상).append(html태그)
-             console.dir(json);
-             //alert(JSON.stringify(json))
-            let html = jsontohtml(json);
-             
-             $('#ouput').append(JSON.stringify(json))
-   // $("<h1>").text(json.title).appendTo("body");
-
-   // $("<div class=\"content\">").html(json.html).appendTo("body");
-            
-            
-            
-            
-            })
-            .fail(function(xhr, status, errorThrown) {
-
-              $("#output").html("오류가 발생했습니다.<br>")
-
-              .append("오류명: " + errorThrown + "<br>")
-
-            	.append("상태: " + status);
-
-            	})
-               break;
-       case "POST":
-    	   $.ajax({
-           url :'https://jsonplaceholder.typicode.com/posts/1',
+<script> 
+   function jsontohtml( json ) {
+        let html  = '';
+        html     += '<div class="data">'; 
+        html     += '<h2>id:'  + json.id      + '</h2>'; 
+        html     += '<div>userID:' + json.userId  + '</div>'; 
+        html     += '<div>title:' + json.title   + '</div>'; 
+        html     += '<div>body' + json.body    + '</div>'; 
+        html     += '</div>'; 
+		return html;
+   }
+   
+   $( function() {
+      let url = ''; 
+      $('button').on('click', function(e) {
+          let method = $('select>option:selected').val();
+          //alert(method);
+          switch( method   ) {
+          case 'GET':
+        	  url = 'https://jsonplaceholder.typicode.com/posts/' + $('#id').val()        	  
+        	  $.ajax( {                  
+                 url      : url,
+                 data     : {},
+                 type     : 'GET',
+                 dataType : 'json'                 
+              })
+              .done(function(json) {
+                    // $(html태그).appendTo(대상)
+				    // $("<h1>").text(json.title).appendTo("body");
+				    // $("<div class=\"content\">").html(json.html).appendTo("body");
+                    
+				    // $(대상).append(html태그)
+				    console.dir(json);
+				    //alert(JSON.stringify(json))
+				    let html = jsontohtml( json );
+				    $('#output').prepend( html )  // 기존 자료앞으로 추가
+				    //$('#output').append( html )   // 기존 자료뒤로 추가                  
+			  })
+              .fail( function(xhr, status, errorThrown) {
+				    $("#output").html("오류가 발생했습니다.<br>")
+				    .append("오류명: " + errorThrown + "<br>")
+				    .append("상태: " + status);
+              } )
+        	   
+        	  break;
+        	  
+          case "POST":
+        	  $.ajax({
+                 url : 'https://jsonplaceholder.typicode.com/posts',
+                 data : {
+    				title : $('#title').val()  , 
+    				body  : $('#body').val()	          
+                 }, // 파라미터 insert
+                 method   : 'POST',
+                 dataType : 'json'
+        	  })
+        	   .done( function( json ) {
+                     console.log(json);
+                     alert(JSON.stringify(json));
+                     let html = '<h2>' + json.id + '번으로 저장되었습니다</h2>';                  
+                     $('#output').html(html)
+        	   })
+        	   .fail( function(xhr, status, errorThrown) {
+				    $("#output").html("오류가 발생했습니다.<br>")
+				    .append("오류명: " + errorThrown + "<br>")
+				    .append("상태: " + status);
+               } )
+        	  break;
+		  case  "DELETE":
+			  $.ajax({
+                  url : 'https://jsonplaceholder.typicode.com/posts/' + $('#id').val(),
+                  type : 'DELETE'
+               })
+			  .done( function( json ) {
+                     console.log(json);
+                     let html = '<h2>' + $('#id').val() + '번이 삭제되었습니다</h2>';
+                     $('#output').html(html)
+        	   })
+        	   .fail( function(xhr, status, errorThrown) {
+				    $("#output").html("오류가 발생했습니다.<br>")
+				    .append("오류명: " + errorThrown + "<br>")
+				    .append("상태: " + status);
+               } )
+		  } // switch end
           
-           
-           data:{
-          title:$('#title').val(), 
-          body:$('#body').val()
           
-        	 
-       },//파라미터  insert
-       
-         method : 'POST', 
-         datatype: 'json'
-    	   
-    	   
-    	   })
-     	   .done(function(json){
-              consle.log(json);
-                  alert(JSON.stringify(json));
-                  let html='<h2>'+json.id+'저장되었습니다</h2>';
-                  html +='<p>'+json.title+'</p>';
-                  html +='<p>'+json.body+'</p>';
-                  $("#output").html(html)
-    	   })
-    	   
-     		     
-       
-     		    .fail(function(xhr, status, errorThrown) {
-
-     	              $("#output").html("오류가 발생했습니다.<br>")
-
-     	              .append("오류명: " + errorThrown + "<br>")
-
-     	            	.append("상태: " + status);
-
-     	            	})
-
-       
-       } // switch end
-    })  
-
-})
-		
+      }) 
+   } ) 
 </script>
-
 </head>
 <body>
-   <fieldset>
-   <legend>성적처리</legend>
-    <select id = "">
-    <option value ="Get">GET</option>
-    <option value ="Post">POST</option>
-    <option value ="Patch">PATCH</option>
-    <option value ="Delete">DELETE</option>
-   
-    </select><br/>
-    id: <input type="number"  id="id"value="1"/><br>
-    title: <input type="text" id="title"value="하하하"/><br>
-    body: <input type="text"  id="body"value="hahaha"/><br>
-    <button>Send</button>
-     </fieldset>
-   <div id="output"></div>
+  <fieldset>
+  <legend>성적처리</legend>
+  <select id="">
+    <option value="GET">GET</option>    
+    <option value="POST">POST</option>
+    <option value="PATCH">PATCH</option>    
+    <option value="DELETE">DELETE</option>
+  </select><br />  
+  id:      <input type="number"  id="id"     value="1"       /><br>  
+  title:   <input type="text"    id="title"  value="하하하"  /><br>
+  body:    <input type="text"    id="body"   value="hahaha"  /><br>  
+  <button>Send</button>
+  
+  </fieldset>
+  <div id="output"></div>
 </body>
 </html>
+
+
+
+
