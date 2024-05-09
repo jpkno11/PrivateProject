@@ -349,3 +349,31 @@
 5월 08, 2024 16:37:54.23 Created TensorFlow Lite XNNPACK delegate for CPU.
 5월 08, 2024 17:29:29.25 Created TensorFlow Lite XNNPACK delegate for CPU.
 5월 08, 2024 17:31:51.22 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 09, 2024 09:05:10.91 NEW SESSION
+5월 09, 2024 09:05:10.92 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 09:13:33.69 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 09:22:02.49 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 09:26:39.71 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 09:30:19.55 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 09:31:07.33 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 09:32:20.64 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 09:34:46.00 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 10:04:30.00 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 10:28:14.72 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 10:35:07.23 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 09, 2024 10:49:58.80 NEW SESSION
+5월 09, 2024 10:49:58.81 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 10:51:11.85 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 11:21:28.57 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 12:09:18.90 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 12:17:32.16 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 12:43:36.36 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 12:45:45.05 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 13:02:23.27 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 13:03:20.98 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 13:05:25.17 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 13:06:38.82 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 14:38:57.70 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 14:41:47.46 [3120:4676:0509/144147.469:ERROR:interface_endpoint_client.cc(707)] Message 1 rejected by interface blink.mojom.WidgetHost
