@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.mtcoding.jobara.apply.model.ApplyRepository">
+
+    <select id="findAll" resultType="shop.mtcoding.jobara.apply.model.Apply">
+        select * from apply_tb
+    </select>
+
+    <select id="findById" resultType="shop.mtcoding.jobara.apply.model.Apply">
+        select * from apply_tb where id = #{id}
+    </select>
+
+    <insert id="insert">
+        insert into apply_tb (board_id, user_id, resume_id, state, created_at) 
+        values(#{boardId}, #{userId}, #{resumeId}, 0, now())
+    </insert>  
+
+    <update id="updateById">
+        update apply_tb 
+           set board_id = #{boardId}, 
+               user_id = #{userId},
+               resume_id = #{resumeId},
+               state = #{state}
+        where id = #{id} 
+    </update>
+
+    <delete id="deleteById">
+        delete from apply_tb where id = #{id}
+    </delete>
+
+    <select id="findByUserIdAndBoardId" resultType="shop.mtcoding.jobara.apply.model.Apply">
+        select * from apply_tb where user_id = #{userId} and board_id = #{boardId}
+    </select>
+
+    <resultMap id="ApplyJoinBoardAndUserAndResumeForComapny" type="shop.mtcoding.jobara.apply.dto.ApplyResp$ApplyJoinBoardAndUser">
+        <id property="id" column="id" />
+        <result property="state" column="state" />
+        <result property="createdAt" column="created_at" />
+        <association property="board" javaType="shop.mtcoding.jobara.apply.dto.ApplyResp$ApplyJoinBoardAndUser$BoardDto">
+            <id property="id" column="board_id" />
+            <result property="title" column="title" />
+        </association>
+        <association property="user" javaType="shop.mtcoding.jobara.apply.dto.ApplyResp$ApplyJoinBoardAndUser$UserDto">
+            <id property="id" column="user_id" />
+            <result property="realName" column="real_name" />
+        </association>
+        <association property="resume" javaType="shop.mtcoding.jobara.apply.dto.ApplyResp$ApplyJoinBoardAndUser$ResumeDto">
+            <id property="id" column="resume_id" />
+        </association>
+    </resultMap>
+
+    <select id="findByUserIdWithBoardAndUser" resultMap="ApplyJoinBoardAndUserAndResumeForComapny">
+        select at.id, at.user_id, at.board_id, rt.id as resume_id, at.state, at.created_at, et.real_name, bt.title
+        from apply_tb at
+        inner join employee_tb et
+        on et.user_id = at.user_id
+        inner join (select * from board_tb where user_id = #{userId}) bt
+        on at.board_id = bt.id
+        inner join resume_tb rt
+        on rt.user_id = et.user_id
+        where at.resume_id = rt.id
+    </select>   
+
+    <resultMap id="ApplyJoinBoardAndUserAndResumeForEmployee" type="shop.mtcoding.jobara.apply.dto.ApplyResp$ApplyJoinBoardAndResume">
+        <id property="id" column="id" />
+        <result property="state" column="state" />
+        <result property="createdAt" column="created_at" />
+        <association property="board" javaType="shop.mtcoding.jobara.apply.dto.ApplyResp$ApplyJoinBoardAndResume$BoardDto">
+            <id property="id" column="board_id" />
+            <result property="title" column="board_title" />
+        </association>
+        <association property="user" javaType="shop.mtcoding.jobara.apply.dto.ApplyResp$ApplyJoinBoardAndResume$UserDto">
+            <id property="id" column="user_id" />
+        </association>
+        <association property="resume" javaType="shop.mtcoding.jobara.apply.dto.ApplyResp$ApplyJoinBoardAndResume$ResumeDto">
+            <id property="id" column="resume_id" />
+            <result property="title" column="resume_title" />
+        </association>
+    </resultMap>
+
+    <select id="findByUserIdWithBoardAndResume" resultMap="ApplyJoinBoardAndUserAndResumeForEmployee">
+        select at.id, at.board_id, at.user_id, rt.id as resume_id, at.state, at.created_at, rt.title resume_title, bt.title board_title
+        from apply_tb at
+        inner join resume_tb rt
+        on at.user_id = rt.user_id
+        inner join board_tb bt
+        on at.board_id = bt.id
+        where at.user_id = #{userId} and at.resume_id = rt.id
+    </select>  
+
+    <select id="findByIdWithBoardForMail" resultType="shop.mtcoding.jobara.apply.dto.ApplyResp$MailDto">
+        select at.id, at.user_id, at.board_id, at.resume_id, at.state, bt.title board_title
+        from (select * from apply_tb where id = #{id}) at
+        inner join board_tb bt
+        on bt.id = at.board_id
+    </select> 
+</mapper>

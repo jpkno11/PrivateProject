@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.users.resume.mapper.ResumeMapper">
+
+	<select id="LgetResumeList">
+		SELECT
+			RE_NUM,
+			USER_ID,
+			RE_TITLE,
+			SKILL,
+			CAREER,
+			REGION,
+			USER_EDU,
+			USER_CAR,
+			USER_INTRO,
+			USER_IMG
+		FROM
+			RESUME
+		WHERE
+			USER_ID = #{ user_id }
+	</select>
+	<insert id="LinsertResume">
+		INSERT INTO RESUME (
+		RE_NUM,
+		USER_ID,
+		RE_TITLE,
+		SKILL,
+		CAREER,
+		REGION,
+		USER_EDU,
+		USER_CAR,
+		USER_INTRO,
+		USER_IMG
+		)
+		VALUES (
+		(SELECT NVL(MAX(RE_NUM), 0)+1 FROM RESUME ),
+		#{ user_id },
+		#{ re_title },
+		#{ skill },
+		#{ career },
+		#{ region },
+		#{ user_edu },
+		#{ user_car },
+		#{user_intro },
+		#{user_img }
+		)
+    
+     </insert>
+</mapper>

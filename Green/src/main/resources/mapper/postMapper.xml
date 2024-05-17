@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.users.post.mapper.PostMapper">
+	<select id="getPostList">
+		SELECT  
+			PO_NUM,
+            COM_ID,
+            PO_TITLE,
+            SKILL,
+            CAREER,
+            REGION,
+            PO_QUAL,
+            PO_CONTENT,
+            PO_IMAGE
+    	 FROM  
+        	POST
+	</select>
+	<select id="LmainPostList">
+         SELECT  
+            PO_NUM,
+            COM_ID,
+            PO_TITLE,
+            SKILL,
+            CAREER,
+            REGION,
+            PO_QUAL,
+            PO_CONTENT,
+            PO_IMAGE
+    	 FROM  
+        	POST
+	</select>
+	<select id="LuserMainPostList">
+       	SELECT  
+            PO_NUM,
+            COM_ID,
+            PO_TITLE,
+            SKILL,
+            CAREER,
+            REGION,
+            PO_QUAL,
+            PO_CONTENT,
+            PO_IMAGE
+    	 FROM  
+        	POST
+	</select>
+	<select id="LComPostList">
+       	SELECT  
+            PO_NUM,
+            COM_ID,
+            PO_TITLE,
+            SKILL,
+            CAREER,
+            REGION,
+            PO_QUAL,
+            PO_CONTENT,
+            PO_IMAGE
+    	 FROM  
+        	POST
+        WHERE
+			COM_ID = #{ com_id }
+	</select>
+	<insert id="LinsertComPost">
+		INSERT INTO POST(
+			PO_NUM,
+			COM_ID,
+			PO_TITLE,
+			SKILL,
+			CAREER,
+			REGION,
+			PO_QUAL,
+			PO_CONTENT,
+			PO_IMAGE
+  		)	
+  		VALUES(
+		  	(SELECT NVL(MAX(PO_NUM), 0) + 1 FROM POST ),
+		  	#{com_id},
+		  	#{po_title},
+		  	#{skill},
+		  	#{career},
+		  	#{region},
+		  	#{po_qual},
+		  	#{po_content},
+		  	#{po_image}
+		)
+	</insert>
+	
+	<delete id="LPostDelete">
+		DELETE  
+	  	FROM POST
+		WHERE PO_NUM = #{po_num}
+	
+	</delete>
+</mapper>

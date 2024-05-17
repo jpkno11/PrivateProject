@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.mtcoding.jobara.board.model.BoardTechRepository">
+
+    <select id="findAll" resultType="shop.mtcoding.jobara.board.model.BoardTech">
+        select * from boardtech_tb
+    </select>
+
+    <select id="findByBoardId" resultType="shop.mtcoding.jobara.board.model.BoardTech">
+        select * from boardtech_tb where board_id = #{boardId}
+    </select>
+
+    <select id="findByIdWithSkillForDetail" resultType="Integer">
+        SELECT skill FROM BOARDTECH_TB 
+        where board_id = #{board_id}
+    </select>
+
+    <insert id="insert">
+        insert into boardtech_tb (board_id, skill) values(#{boardId}, #{skill})
+    </insert>    
+
+    <delete id="deleteByBoardId">
+        delete from boardtech_tb where board_id = #{boardId} 
+    </delete>    
+
+    <insert id="insertSkill">
+        insert into boardtech_tb (board_id, skill) 
+          VALUES
+        <foreach collection="checkLang" item="skill" separator=",">
+            (#{boardId}, #{skill})
+        </foreach>
+    </insert> 
+
+    <update id="updateByBoardId">
+        update boardtech_tb 
+           set skill = #{skill}
+        where board_id = #{boardId} 
+    </update>
+
+</mapper>

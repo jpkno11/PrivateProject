@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.company.mapper.CompanyMapper">
+	
+	<select id="LgetCom">
+ 	 SELECT 
+		COM_ID,
+		COM_PW,
+		COM_NAME,
+		COM_NUM,
+		COM_BOSS,
+		COM_ADR,
+		COM_TELL,
+		COM_DATE
+   	FROM
+      COMPANY
+ 	WHERE  COM_ID = #{com_id}
+	
+	</select>
+	<select id="LgetCompany">
+	 SELECT 
+		COM_ID,
+		COM_PW,
+		COM_NAME,
+		COM_NUM,
+		COM_BOSS,
+		COM_ADR,
+		COM_TELL,
+		COM_DATE
+   	FROM
+      COMPANY
+ 	WHERE  COM_ID = #{com_id}
+	
+	</select>
+</mapper>
