@@ -64,13 +64,13 @@ private ArticleRepository articleRepository;
   		return "articles/edit";
   	}
  @PostMapping("articles/update")
- public String update(ArticleDto Dto ) {
-	 log. info(Dto.toString());
+ public String update(ArticleDto dto ) {
+	 log.info(dto.toString());
 	 //1. Dto를 엔티티 변환하기
-	 Article articleEntity =Dto.toEntity();	 
-	 log.info(Dto.toString());
+	 Article articleEntity =dto.toEntity();	 
+	 log.info(dto.toString());
 	 //2. 엔티티를 DB에 저장하기
-	 Article target =  articleRepository.findById(articleEntity.getId()).orElse(null);
+	 Article target = articleRepository.findById(articleEntity.getId()).orElse(null);
 	 //2-2 기존데이터값을 갱신하기
 	 if (target != null) {
 		 articleRepository.save(articleEntity); //엔티티를 DB에 저장(갱신)

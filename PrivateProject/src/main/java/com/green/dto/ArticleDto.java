@@ -15,7 +15,7 @@ public class ArticleDto {
 
 
 public Article toEntity() {
-	Article article = new Article(null, title, content);	
+	Article article = new Article(id, title, content);	
 	return article;
 }
 
