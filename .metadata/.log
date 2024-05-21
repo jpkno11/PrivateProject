@@ -268,3 +268,334 @@ java.lang.NullPointerException: Cannot invoke "org.springframework.ide.eclipse.b
 
 !ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:09:39.667
 !MESSAGE Boot project REMOVED: Green2
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:22:43.954
+!MESSAGE Classpath changed for project: Green
+
+!ENTRY org.eclipse.jdt.core 4 2 2024-05-21 17:22:43.954
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core".
+!STACK 0
+java.lang.ClassCastException: class org.eclipse.jdt.internal.core.JavaNature cannot be cast to class org.eclipse.jdt.core.IJavaProject (org.eclipse.jdt.internal.core.JavaNature and org.eclipse.jdt.core.IJavaProject are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @ab82734)
+	at org.springsource.ide.eclipse.commons.core.JdtUtils.getJavaProject(JdtUtils.java:336)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.ProjectResourceLoaderCache$ResourceLoaderCacheEntry.elementChanged(ProjectResourceLoaderCache.java:364)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1761)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1749)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1582)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1558)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyAndFire(DeltaProcessor.java:2274)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2164)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:503)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:321)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:311)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:174)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:458)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1586)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:50)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:22:43.954
+!MESSAGE Boot project ADDED: Green
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-05-21 17:22:43.954
+!MESSAGE Exception occurred in listener of Java element change notification
+!STACK 0
+java.lang.ClassCastException: class org.eclipse.jdt.internal.core.JavaNature cannot be cast to class org.eclipse.jdt.core.IJavaProject (org.eclipse.jdt.internal.core.JavaNature and org.eclipse.jdt.core.IJavaProject are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @ab82734)
+	at org.springsource.ide.eclipse.commons.core.JdtUtils.getJavaProject(JdtUtils.java:336)
+	at org.springframework.ide.eclipse.xml.namespaces.classpath.ProjectResourceLoaderCache$ResourceLoaderCacheEntry.elementChanged(ProjectResourceLoaderCache.java:364)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1761)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1749)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1582)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1558)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyAndFire(DeltaProcessor.java:2274)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2164)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:503)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:321)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:311)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:174)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:458)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1586)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:50)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui 4 0 2024-05-21 17:22:53.626
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.springframework.ide.eclipse.boot.dash.model.BootProjectDashElement.getCurrentChildren()" because the return value of "org.springframework.ide.eclipse.boot.dash.model.LaunchConfDashElement.getParent()" is null
+	at org.springframework.ide.eclipse.boot.dash.model.ToggleFiltersModel$1.accept(ToggleFiltersModel.java:46)
+	at org.springframework.ide.eclipse.boot.dash.model.ToggleFiltersModel$1.accept(ToggleFiltersModel.java:1)
+	at org.springsource.ide.eclipse.commons.livexp.util.Filters$2.accept(Filters.java:51)
+	at org.springsource.ide.eclipse.commons.livexp.util.Filters$2.accept(Filters.java:51)
+	at org.springframework.ide.eclipse.boot.dash.views.sections.BootDashUnifiedTreeSection$11.select(BootDashUnifiedTreeSection.java:417)
+	at org.eclipse.jface.viewers.ViewerFilter.filter(ViewerFilter.java:62)
+	at org.eclipse.jface.viewers.StructuredViewer.getFilteredChildren(StructuredViewer.java:855)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.isExpandable(AbstractTreeViewer.java:2210)
+	at org.eclipse.jface.viewers.TreeViewer.isExpandable(TreeViewer.java:553)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.isExpandable(AbstractTreeViewer.java:2238)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.updatePlus(AbstractTreeViewer.java:2968)
+	at org.eclipse.jface.viewers.TreeViewer.updatePlus(TreeViewer.java:796)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1933)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1900)
+	at org.eclipse.jface.viewers.StructuredViewer.lambda$3(StructuredViewer.java:1486)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1392)
+	at org.eclipse.jface.viewers.TreeViewer.preservingSelection(TreeViewer.java:367)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1353)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(StructuredViewer.java:1486)
+	at org.eclipse.jface.viewers.ColumnViewer.refresh(ColumnViewer.java:533)
+	at org.springframework.ide.eclipse.boot.dash.views.sections.BootDashUnifiedTreeSection$3$1.run(BootDashUnifiedTreeSection.java:208)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4047)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3663)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:152)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.ui 4 0 2024-05-21 17:22:53.626
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.springframework.ide.eclipse.boot.dash.model.BootProjectDashElement.getCurrentChildren()" because the return value of "org.springframework.ide.eclipse.boot.dash.model.LaunchConfDashElement.getParent()" is null
+	at org.springframework.ide.eclipse.boot.dash.model.ToggleFiltersModel$1.accept(ToggleFiltersModel.java:46)
+	at org.springframework.ide.eclipse.boot.dash.model.ToggleFiltersModel$1.accept(ToggleFiltersModel.java:1)
+	at org.springsource.ide.eclipse.commons.livexp.util.Filters$2.accept(Filters.java:51)
+	at org.springsource.ide.eclipse.commons.livexp.util.Filters$2.accept(Filters.java:51)
+	at org.springframework.ide.eclipse.boot.dash.views.sections.BootDashUnifiedTreeSection$11.select(BootDashUnifiedTreeSection.java:417)
+	at org.eclipse.jface.viewers.ViewerFilter.filter(ViewerFilter.java:62)
+	at org.eclipse.jface.viewers.StructuredViewer.getFilteredChildren(StructuredViewer.java:855)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.isExpandable(AbstractTreeViewer.java:2210)
+	at org.eclipse.jface.viewers.TreeViewer.isExpandable(TreeViewer.java:553)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.isExpandable(AbstractTreeViewer.java:2238)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.updatePlus(AbstractTreeViewer.java:2968)
+	at org.eclipse.jface.viewers.TreeViewer.updatePlus(TreeViewer.java:796)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1933)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1900)
+	at org.eclipse.jface.viewers.StructuredViewer.lambda$3(StructuredViewer.java:1486)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1392)
+	at org.eclipse.jface.viewers.TreeViewer.preservingSelection(TreeViewer.java:367)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1353)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(StructuredViewer.java:1486)
+	at org.eclipse.jface.viewers.ColumnViewer.refresh(ColumnViewer.java:533)
+	at org.springframework.ide.eclipse.boot.dash.views.sections.BootDashUnifiedTreeSection$3$1.run(BootDashUnifiedTreeSection.java:208)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4047)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3663)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:152)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.ui 4 0 2024-05-21 17:22:53.627
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.springframework.ide.eclipse.boot.dash.model.BootProjectDashElement.getCurrentChildren()" because the return value of "org.springframework.ide.eclipse.boot.dash.model.LaunchConfDashElement.getParent()" is null
+	at org.springframework.ide.eclipse.boot.dash.model.ToggleFiltersModel$1.accept(ToggleFiltersModel.java:46)
+	at org.springframework.ide.eclipse.boot.dash.model.ToggleFiltersModel$1.accept(ToggleFiltersModel.java:1)
+	at org.springsource.ide.eclipse.commons.livexp.util.Filters$2.accept(Filters.java:51)
+	at org.springsource.ide.eclipse.commons.livexp.util.Filters$2.accept(Filters.java:51)
+	at org.springframework.ide.eclipse.boot.dash.views.sections.BootDashUnifiedTreeSection$11.select(BootDashUnifiedTreeSection.java:417)
+	at org.eclipse.jface.viewers.ViewerFilter.filter(ViewerFilter.java:62)
+	at org.eclipse.jface.viewers.StructuredViewer.getFilteredChildren(StructuredViewer.java:855)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.isExpandable(AbstractTreeViewer.java:2210)
+	at org.eclipse.jface.viewers.TreeViewer.isExpandable(TreeViewer.java:553)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.isExpandable(AbstractTreeViewer.java:2238)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.updatePlus(AbstractTreeViewer.java:2968)
+	at org.eclipse.jface.viewers.TreeViewer.updatePlus(TreeViewer.java:796)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1933)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1900)
+	at org.eclipse.jface.viewers.StructuredViewer.lambda$3(StructuredViewer.java:1486)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1392)
+	at org.eclipse.jface.viewers.TreeViewer.preservingSelection(TreeViewer.java:367)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1353)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(StructuredViewer.java:1486)
+	at org.eclipse.jface.viewers.ColumnViewer.refresh(ColumnViewer.java:533)
+	at org.springframework.ide.eclipse.boot.dash.views.sections.BootDashUnifiedTreeSection$3$1.run(BootDashUnifiedTreeSection.java:208)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4047)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3663)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:152)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.ui 4 0 2024-05-21 17:22:53.627
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.springframework.ide.eclipse.boot.dash.model.BootProjectDashElement.getCurrentChildren()" because the return value of "org.springframework.ide.eclipse.boot.dash.model.LaunchConfDashElement.getParent()" is null
+	at org.springframework.ide.eclipse.boot.dash.model.ToggleFiltersModel$1.accept(ToggleFiltersModel.java:46)
+	at org.springframework.ide.eclipse.boot.dash.model.ToggleFiltersModel$1.accept(ToggleFiltersModel.java:1)
+	at org.springsource.ide.eclipse.commons.livexp.util.Filters$2.accept(Filters.java:51)
+	at org.springsource.ide.eclipse.commons.livexp.util.Filters$2.accept(Filters.java:51)
+	at org.springframework.ide.eclipse.boot.dash.views.sections.BootDashUnifiedTreeSection$11.select(BootDashUnifiedTreeSection.java:417)
+	at org.eclipse.jface.viewers.ViewerFilter.filter(ViewerFilter.java:62)
+	at org.eclipse.jface.viewers.StructuredViewer.getFilteredChildren(StructuredViewer.java:855)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.isExpandable(AbstractTreeViewer.java:2210)
+	at org.eclipse.jface.viewers.TreeViewer.isExpandable(TreeViewer.java:553)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.isExpandable(AbstractTreeViewer.java:2238)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.updatePlus(AbstractTreeViewer.java:2968)
+	at org.eclipse.jface.viewers.TreeViewer.updatePlus(TreeViewer.java:796)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1933)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1900)
+	at org.eclipse.jface.viewers.StructuredViewer.lambda$3(StructuredViewer.java:1486)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1392)
+	at org.eclipse.jface.viewers.TreeViewer.preservingSelection(TreeViewer.java:367)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1353)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(StructuredViewer.java:1486)
+	at org.eclipse.jface.viewers.ColumnViewer.refresh(ColumnViewer.java:533)
+	at org.springframework.ide.eclipse.boot.dash.views.sections.BootDashUnifiedTreeSection$3$1.run(BootDashUnifiedTreeSection.java:208)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4047)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3663)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:152)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:22:53.691
+!MESSAGE Classpath changed for project: PrivateProject
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:22:53.691
+!MESSAGE Boot project REMOVED: PrivateProject
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:32:28.136
+!MESSAGE Classpath changed for project: PrjJpa05
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:32:28.137
+!MESSAGE Boot project ADDED: PrjJpa05
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:32:31.986
+!MESSAGE Classpath changed for project: PrjJpa05
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:32:31.987
+!MESSAGE Boot project REMOVED: PrjJpa05
+
+!ENTRY org.eclipse.ui 4 0 2024-05-21 17:32:32.049
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.springframework.ide.eclipse.boot.dash.model.BootProjectDashElement.getCurrentChildren()" because the return value of "org.springframework.ide.eclipse.boot.dash.model.LaunchConfDashElement.getParent()" is null
+	at org.springframework.ide.eclipse.boot.dash.model.ToggleFiltersModel$1.accept(ToggleFiltersModel.java:46)
+	at org.springframework.ide.eclipse.boot.dash.model.ToggleFiltersModel$1.accept(ToggleFiltersModel.java:1)
+	at org.springsource.ide.eclipse.commons.livexp.util.Filters$2.accept(Filters.java:51)
+	at org.springsource.ide.eclipse.commons.livexp.util.Filters$2.accept(Filters.java:51)
+	at org.springframework.ide.eclipse.boot.dash.views.sections.BootDashUnifiedTreeSection$11.select(BootDashUnifiedTreeSection.java:417)
+	at org.eclipse.jface.viewers.ViewerFilter.filter(ViewerFilter.java:62)
+	at org.eclipse.jface.viewers.StructuredViewer.getFilteredChildren(StructuredViewer.java:855)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.isExpandable(AbstractTreeViewer.java:2210)
+	at org.eclipse.jface.viewers.TreeViewer.isExpandable(TreeViewer.java:553)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.isExpandable(AbstractTreeViewer.java:2238)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.updatePlus(AbstractTreeViewer.java:2968)
+	at org.eclipse.jface.viewers.TreeViewer.updatePlus(TreeViewer.java:796)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1933)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1900)
+	at org.eclipse.jface.viewers.StructuredViewer.lambda$3(StructuredViewer.java:1486)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1392)
+	at org.eclipse.jface.viewers.TreeViewer.preservingSelection(TreeViewer.java:367)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1353)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(StructuredViewer.java:1486)
+	at org.eclipse.jface.viewers.ColumnViewer.refresh(ColumnViewer.java:533)
+	at org.springframework.ide.eclipse.boot.dash.views.sections.BootDashUnifiedTreeSection$3$1.run(BootDashUnifiedTreeSection.java:208)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4047)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3663)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:152)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:33:34.847
+!MESSAGE Classpath changed for project: PrivateProject
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-05-21 17:33:34.847
+!MESSAGE Boot project ADDED: PrivateProject
