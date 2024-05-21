@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.users.apply.mapper.ApplyMapper">
+<resultMap type="java.util.HashMap" id="getUserMap">
+	<result property="com_name" column="com_name"/>
+	<result property="user_id" column="user_id"/>
+	<result property="po_title" column="po_title"/>
+	<result property="career" column="career"/>
+	<result property="re_num" column="re_num"/>
+	<result property="ap_date" column="ap_date"/>
+	<result property="result" column="result"/>
+</resultMap>
+  <select id="getInfo">
+  	SELECT 
+  	    USER_ID,
+				USER_NAME,
+				USER_PW,
+				USER_TELL,
+				USER_BIRTH,
+				USER_ADR,
+				USER_DATE
+		FROM USERS
+		WHERE USER_ID = #{user_id}
+  </select>
+  <select   id="getApplyList" >
+  SELECT
+  		CP.COM_NAME   
+  	 , AP.PO_NUM
+  	 , PT.CAREER
+    , AP.RE_NUM
+    , AP.RE_TITLE
+    , AP.PO_TITLE
+    , AP.RESULT
+    , AP.AP_DATE
+   FROM  
+      APPLY AP, RESUME RE, COMPANY CP, POST PT
+    WHERE
+      RE.USER_ID = #{ user_id }
+     AND
+      AP.RE_NUM = RE.RE_NUM
+     AND
+      AP.PO_NUM = PT.PO_NUM
+     AND
+      PT.COM_ID = CP.COM_ID
+</select>
+
+     
+<!--   	SELECT  -->
+<!-- 	    CP.COM_NAME COM_NAME, -->
+<!-- 	    PT.PO_TITLE PO_TITLE, -->
+<!-- 	    PT.CAREER CAREER, -->
+<!-- 	    RS.RE_NUM RE_NUM, -->
+<!-- 	    AP.AP_DATE AP_DATE, -->
+<!-- 	    AP.RESULT RESULT -->
+<!-- 		FROM -->
+<!-- 		    APPLY AP -->
+<!-- 		JOIN  -->
+<!-- 		    POST PT ON ap.po_num = pt.po_num -->
+<!-- 		JOIN  -->
+<!-- 		    RESUME RS ON ap.re_num = rs.re_num -->
+<!-- 		JOIN -->
+<!-- 		    COMPANY CP ON pt.com_id = cp.com_id -->
+<!-- 		JOIN -->
+<!-- 		    USERS U ON rs.user_id = u.user_id -->
+<!-- 		WHERE -->
+<!-- 		    U.USER_ID = #{arg1} -->
+</mapper>

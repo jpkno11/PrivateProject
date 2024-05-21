@@ -629,3 +629,86 @@
 5월 17, 2024 16:15:06.15 Created TensorFlow Lite XNNPACK delegate for CPU.
 5월 17, 2024 17:03:06.73 Created TensorFlow Lite XNNPACK delegate for CPU.
 5월 17, 2024 17:22:38.91 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 20, 2024 11:05:34.23 NEW SESSION
+5월 20, 2024 11:05:34.24 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:14:16.44 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:14:39.91 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:17:08.27 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:17:18.98 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:17:49.76 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:18:02.76 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:32:04.73 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:33:44.30 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:36:11.13 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:36:59.04 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:41:22.35 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:41:34.64 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:48:29.17 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:55:53.45 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:58:51.56 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:59:32.29 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 11:59:48.24 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 12:00:09.76 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 12:01:34.07 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 12:14:07.02 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 12:16:26.53 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 12:21:18.64 [1704:5520:0520/122118.649:ERROR:interface_endpoint_client.cc(707)] Message 1 rejected by interface blink.mojom.WidgetHost
+5월 20, 2024 12:23:43.59 [1704:5520:0520/122343.597:ERROR:interface_endpoint_client.cc(707)] Message 1 rejected by interface blink.mojom.WidgetHost
+5월 20, 2024 12:33:44.00 [1704:5520:0520/123344.001:ERROR:interface_endpoint_client.cc(707)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+5월 20, 2024 12:48:54.73 NEW SESSION
+5월 20, 2024 12:48:54.74 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 12:49:11.21 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 20, 2024 12:49:37.80 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 21, 2024 09:19:16.64 NEW SESSION
+5월 21, 2024 09:19:16.65 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 09:27:15.09 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 09:29:17.13 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 09:35:59.30 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 09:36:48.62 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 09:37:43.93 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 09:42:53.27 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 21, 2024 09:47:24.35 NEW SESSION
+5월 21, 2024 09:47:24.36 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 09:50:07.12 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 09:54:01.21 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 21, 2024 10:11:07.71 NEW SESSION
+5월 21, 2024 10:11:07.72 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 10:43:36.55 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 21, 2024 10:46:08.40 NEW SESSION
+5월 21, 2024 10:46:08.41 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 21, 2024 10:56:00.33 NEW SESSION
+5월 21, 2024 10:56:00.34 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 10:56:43.71 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 10:56:55.68 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 21, 2024 11:41:49.53 NEW SESSION
+5월 21, 2024 11:41:49.54 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 11:44:33.14 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 11:45:35.38 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 11:50:27.01 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 12:00:42.53 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 12:01:38.33 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 12:55:30.11 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 13:45:06.60 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 13:45:37.18 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 14:05:42.25 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 14:07:11.49 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 14:20:53.63 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 15:04:10.34 [840:13764:0521/150410.343:ERROR:interface_endpoint_client.cc(707)] Message 1 rejected by interface blink.mojom.WidgetHost
+5월 21, 2024 15:12:19.44 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 15:43:26.54 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 15:45:33.37 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 15:56:32.02 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 15:58:54.39 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 16:06:01.46 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 16:09:57.17 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 16:10:41.15 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 16:12:28.21 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 21, 2024 16:13:12.20 Created TensorFlow Lite XNNPACK delegate for CPU.

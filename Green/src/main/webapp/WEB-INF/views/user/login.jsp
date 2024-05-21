@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 화면</title>
+<title>Jik Job</title>
 
 <style>
 
@@ -87,7 +87,7 @@
 </head>
 <body>
 
-    <%@include file="/WEB-INF/views/include/pheader.jsp" %>
+    <%@include file="/WEB-INF/views/include/homeheader.jsp" %>
 
 	<form action="/Login" method="POST">
 		
@@ -134,8 +134,12 @@
 			 <tr id="userLoginFormRow3">
 			   <td colspan="2">
 			    <button type="button" class="btn btn-primary" id="pwriteForm" >회원가입</button>
-			    <input type="submit" value="(개인)로그인" id="plogincss" />
-			   </td>
+  				<!-- 기타 로그인 정보 입력 필드 -->
+				<form action="/Users/Uhome" method="post">
+				<!-- 기타 로그인 정보 입력 필드 -->
+					<input type="submit" value="(개인)로그인" id="plogincss" />
+				</form>
+					</td>
 			 </tr>
 			
 			</table>

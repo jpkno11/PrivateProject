@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@include file="/WEB-INF/views/include/cheader.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,8 +30,8 @@ body {
 .resume-container {
 	display: flex;
 	justify-content: center;
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
 /* 이력서 내부 스타일 */
@@ -93,20 +93,19 @@ textarea {
     gap: 20px; /* 항목 사이의 간격 */
 }
 
-
 </style>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
+    <%@include file="/WEB-INF/views/include/cheader.jsp" %>
+</head>	
 <body>
 
-    <!-- 이력서 -->
+    <!-- 공고 등록 -->
 	 <div class="resume-container">
         <form action="/Company/SavePost" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="po_image">
+            <input type="hidden" name="po_image" value="/img/post1.png">
             <input type="hidden" name="com_id" value="${sessionScope.clogin.com_id}">
             	<div class="border border-tertiary w-100 p-5 rounded shadow">
 				<h2>
-					<input type="text" placeholder="이력서 제목을 입력하세요" style="width: 700px"
+					<input type="text" placeholder="공고 제목을 입력하세요" style="width: 700px"
 						class="hs_input_title" name="po_title" >
 				</h2>
 				<hr>
@@ -114,7 +113,7 @@ textarea {
 					<div class="content-center">
 
 						<div class="jh_resume_flexbox mt-3">
-							<img src="/img/face.jpg" id="imagePreview"
+							<img src="/img/post1.png" id="imagePreview"
 								style="width: 200px; height: 250px;"
 								class="mb-2 border border-tertiary">
 							<div class="jh_resume_personal_info">
@@ -146,11 +145,7 @@ textarea {
 				<div class="container" style="width: 85%;">
 					<div class="row justify-content-center">
 						<div class="col-md-14 mx-auto">
-							<!-- <input type="file" class="form-control mt-2" name="user_img들어갈곳"
-								onchange="chooseImage(this)" /> <br>  -->
-								
-								<span>분야 &nbsp
-								| &nbsp </span> <select name="skill">
+								<span>분야 &ensp; &ensp; </span> <select name="skill">
 								<option value="JavaScript">JavaScript</option>
 								<option value="TypeScript">TypeScript</option>
 								<option value="Java">Java</option>
@@ -181,6 +176,7 @@ textarea {
 								<option value="세종">세종</option>
 								<option value="제주">제주</option>
 							</select>
+							<hr>
 							<div class="mt-5">
 								<h4>모집조건</h4>
 								<input type="text" class="form-control mt-2" id="floatingInput"
@@ -199,6 +195,7 @@ textarea {
 						</div>
 					</div>
 				</div>
+			</div>
 		</form>
 	</div>
 

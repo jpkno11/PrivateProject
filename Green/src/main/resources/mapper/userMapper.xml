@@ -94,5 +94,54 @@
  	WHERE  USER_ID = #{user_id}
    
    </select>
+   
+   <select id="LCheckGetUser_id">
+   	SELECT 
+      USER_ID,
+      USER_NAME,
+      USER_PW,
+      USER_TELL,
+      USER_BIRTH,
+      USER_ADR,
+      USER_DATE
+   	FROM
+      USERS
+ 	WHERE  USER_ID = #{user_id}
+   
+   </select>
 
+ <select  id = "Pgetedituser">
+	SELECT
+		USER_ID,
+		USER_NAME,
+		USER_PW,
+		USER_TELL,
+		TO_CHAR(USER_BIRTH, 'YYYY.MM.DD') USER_BIRTH,
+		USER_ADR,
+		USER_DATE
+	FROM
+		USERS
+	WHERE
+		USER_ID = #{ user_id }  
+	          
+	</select>
+		<update id="PupdateInfo">
+	UPDATE USERS
+	SET	
+		USER_ID = #{user_id},
+		USER_NAME = #{user_name},
+		USER_PW = #{user_pw},
+		USER_TELL = #{user_tell},
+		USER_BIRTH = #{user_birth},
+		USER_ADR = #{user_adr},
+		USER_DATE = #{user_date}
+		WHERE 
+		USER_ID = #{user_id}
+	</update>
+	<delete id="PInfoDelete">
+	  DELETE  
+      FROM USERS
+         WHERE USER_ID = #{user_id}
+	
+	</delete>
 </mapper>

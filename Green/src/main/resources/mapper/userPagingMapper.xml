@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.users.mapper.UserPagingMapper">  
+<resultMap id="postViewResultMap" type="java.util.HashMap">
+    <id property="po_num" column="PO_NUM"/>
+    <result property="com_id" column="COM_ID"/>
+    <result property="po_title" column="PO_TITLE"/>
+    <result property="skill" column="SKILL"/>
+    <result property="career" column="CAREER"/>
+    <result property="region" column="REGION"/>
+    <result property="po_qual" column="PO_QUAL"/>
+    <result property="po_content" column="PO_CONTENT"/>
+    <result property="po_image" column="PO_IMAGE"/>
+    <result property="ub_boolean" column="UB_BOOLEAN"/>
+</resultMap>
+    <select id="count"  parameterType="com.green.users.post.domain.PostVo"  resultType="int">
+		SELECT COUNT(*) AS CNT
+		  FROM POST
+		  <where>
+		  <if test="po_num != null and po_num != ''">
+			 AND PO_NUM = #{ po_num }
+		  </if>
+		  <if test="po_title != null and po_title != ''">
+			 AND PO_TITLE LIKE '%' || #{po_title} || '%'
+		  </if>
+		  </where>
+	</select>
+	  <select id="LgetPostPagingList"  resultType="com.green.users.post.domain.PostVo">
+	    SELECT  
+	      P.PO_NUM,
+	      P.COM_ID,
+	      P.PO_TITLE,
+	      P.SKILL,
+	      P.CAREER,
+	      P.REGION,
+	      P.PO_QUAL,
+	      P.PO_CONTENT,
+	      P.PO_IMAGE,
+	      C.COM_NAME,
+	      C.COM_NUM,
+		  C.COM_BOSS,
+		  C.COM_ADR,
+		  C.COM_TELL,
+		  CR.RATING
+	    FROM  
+	      POST P
+	    JOIN
+	      COMPANY C
+	    ON
+	      P.COM_ID = C.COM_ID
+	    LEFT JOIN
+	      COMRATINGS CR
+	    ON
+	      P.COM_ID = CR.COM_ID
+         <where>
+          <if test="arg0 != null and arg0 != ''">
+			 AND COM_ID = #{ arg0 }
+		  </if>
+          <if test="arg1 != null and arg1 != ''">
+			 AND COM_NAME LIKE '%' || #{ arg1 } || '%'
+		  </if>
+		  <if test="arg2 != null and arg2 != ''">
+			 AND PO_TITLE LIKE '%' || #{ arg2 } || '%'
+		  </if>		 
+		  <if test="arg3 != null and arg3 != ''">
+			 AND  PO_QUAL '%' || #{ arg3 } || '%'
+		  </if>		 
+		  </where>
+         ORDER BY  PO_NUM DESC 
+	    OFFSET #{ arg4 } ROWS FETCH NEXT #{ arg5 } ROWS ONLY 
+         
+    </select>
+</mapper>

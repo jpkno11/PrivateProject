@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.green.users.resume.mapper.ResumeMapper">
-
 	<select id="LgetResumeList">
 		SELECT
 			RE_NUM,
@@ -46,4 +45,63 @@
 		)
     
      </insert>
+     
+     <select   id="LgetResumes" >
+    	SELECT  
+			RE_NUM,
+			USER_ID,
+			RE_TITLE,
+			SKILL,
+			CAREER,
+			REGION,
+			USER_EDU,
+			USER_CAR,
+			USER_INTRO,
+			USER_IMG
+    	 FROM  
+           RESUME
+         WHERE
+           RE_NUM = #{ re_num }
+     </select>
+      <update id="LResumeUpdate">
+      	UPDATE RESUME
+		SET  
+			RE_NUM = #{re_num},
+			USER_ID= #{user_id},
+			RE_TITLE = #{re_title},
+			SKILL = #{skill},
+			CAREER = #{career},
+			REGION = #{region},
+			USER_EDU = #{user_edu},
+			USER_CAR = #{user_car},
+			USER_INTRO = #{user_intro}
+		  WHERE 
+			USER_ID = #{user_id}
+			AND RE_NUM = #{re_num}
+		</update>
+		
+		<delete id="LResumeDelete">
+		DELETE  
+  		FROM RESUME
+			WHERE RE_NUM = #{re_num}
+		</delete>
+		
+	<select id="KgetResumeList" resultType="com.green.users.resume.domain.ResumeVo">
+  	  SELECT 
+  	    RE_NUM,
+		USER_ID,
+		RE_TITLE,
+		SKILL,
+		CAREER,
+		REGION,
+		USER_EDU,
+		USER_CAR,
+		USER_INTRO,
+		USER_IMG
+  	  FROM
+  	    RESUME
+  	  WHERE
+  	    USER_ID = #{ user_id }
+  	  ORDER BY RE_NUM ASC
+  </select>
 </mapper>

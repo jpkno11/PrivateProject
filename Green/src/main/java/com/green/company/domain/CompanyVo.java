@@ -17,4 +17,5 @@ public class CompanyVo {
 	private  String com_tell;
 	private  String com_date;
 	
+
 }

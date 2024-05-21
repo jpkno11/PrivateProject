@@ -58,9 +58,9 @@
 
 					<div class="form-group">
 						<label for="com_id">아이디</label>
-						<input type="text" class="form-control" name="com_id" placeholder="아이디를 입력하세요">
+						<input type="text" class="form-control" name="com_id" id="com_id" placeholder="아이디를 입력하세요">
 					</div>
-
+					<button type="submit" class="btn btn-primary btn-block" id="ComCheck">중복확인<i class="fas fa-user-plus"></i></button>
 					<div class="form-group">
 						<label for="com_pw">비밀번호</label>
 						<input type="password" class="form-control" name="com_pw" placeholder="비밀번호를 입력하세요">
@@ -88,9 +88,15 @@
 
 					<div class="form-group">
 						<label for="com_adr">주소</label>
-						<input type="text" class="form-control" name="com_adr" placeholder="회사주소를 입력하세요">
+						<div class="input-group">
+							<input type="text" class="form-control" id="com_adr"
+								name="com_adr" placeholder="회사주소를 입력하세요">
+							<div class="input-group-append">
+								<button class="btn btn-outline-secondary" type="button"
+									id="searchAdr">주소 검색</button>
+							</div>
+						</div>
 					</div>
-
 					<div class="form-group">
 						<label for="com_tell">전화번호</label>
 						<input type="tel" class="form-control" name="com_tell" placeholder="전화번호를 입력하세요">
@@ -107,8 +113,47 @@
 		</div>
 	</div>
 
-	<%@include file="/WEB-INF/views/include/footer.jsp"%>
+</body>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	    const checkButton = document.getElementById('ComCheck');
+	    checkButton.addEventListener('click', function(event) {
+	        event.preventDefault();
+	        check_id();
+	    });
+	});
 	
+	function check_id() {
+	    const comId = document.getElementById('com_id').value;
+	    if (comId === "") {
+	        alert('아이디를 입력해주세요.');
+	        return;
+	    }
+	    const url = '/CheckcomId';
+	    const params = {
+	        method: 'POST',
+	        headers: {
+	            "Content-Type": "application/json"
+	        },
+	        body: JSON.stringify({ com_id : comId })
+	    };
+	    
+	    fetch(url, params)
+	        .then(response => response.json())
+	        .then(data => {
+	            if(data == 0) { 
+	                alert('사용 가능한 아이디입니다.');
+	            } else {
+	                alert('이미 사용 중인 아이디입니다.');
+	            }
+	        })
+	        .catch(error => console.error('Error:', error));
+	}
+	</script>
+	<%@include file="/WEB-INF/views/include/footer.jsp"%>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 	
 	  // 취소 버튼
@@ -118,7 +163,20 @@
 		  alert('가입이 취소되었습니다. 로그인창으로 이동합니다.');
 	  })
 	
-	</script>
+	  
+	  // 주소 api
+	  
+	      document.getElementById('searchAdr').addEventListener('click', function() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 주소 선택 후 처리할 코드
+                // 예: document.getElementById('com_adr').value = data.address; // 사용자가 선택한 주소를 'com_adr' 필드에 입력
+            	document.getElementById('com_adr').value = data.address;
+            }
+        }).open();
+    });
+
 	
-</body>
+	  
+	</script>
 </html>

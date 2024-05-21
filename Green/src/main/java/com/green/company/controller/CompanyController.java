@@ -11,23 +11,23 @@ import com.green.company.applyed.domain.ApplyedVo;
 import com.green.company.applyed.mapper.ApplyedMapper;
 import com.green.company.domain.CompanyVo;
 import com.green.company.mapper.CompanyMapper;
-
-import com.green.company.talentList.mapper.TalentListMapper;
+import com.green.users.domain.UserVo;
 import com.green.users.post.domain.PostVo;
 import com.green.users.post.mapper.PostMapper;
+import com.green.users.resume.domain.ResumeVo;
 
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/Company")
 public class CompanyController {
 	@Autowired
-	PostMapper postMapper;
+	private PostMapper postMapper;
 	@Autowired
-	CompanyMapper companyMapper;
+	private CompanyMapper companyMapper;
+	
 	@Autowired
-	ApplyedMapper applyedMapper;
-	@Autowired
-	TalentListMapper talentListMapper;
+	private ApplyedMapper applyedMapper;
 	
 	@RequestMapping("/Chome")
 	public   ModelAndView   uhome() {		
@@ -37,13 +37,21 @@ public class CompanyController {
 		mv.setViewName("company/chome");
 		return mv;
 	}
+	@RequestMapping("/List")
+	public ModelAndView list( PostVo postVo ) {
+        List<PostVo> postList = postMapper.LgetPostList(postVo);
+        ModelAndView   mv  =  new ModelAndView();
+        mv.addObject("postList", postList);
+        mv.setViewName("company/postList");
+        return mv;
+	}
 	
 	@RequestMapping("/CInfo")
 	   public  ModelAndView  cInfo(CompanyVo companyVo) {
 		CompanyVo po = companyMapper.LgetCom( companyVo );
 		ModelAndView   mv  =  new ModelAndView();
 		mv.addObject("po", po);
-		mv.setViewName("company/info");
+		mv.setViewName("company/cinfo");
 		return         mv;
 	   }
 	@RequestMapping("/PostForm")
@@ -77,10 +85,19 @@ public class CompanyController {
 	      postMapper.LPostDelete( postVo );      
 	      ModelAndView   mv   =  new  ModelAndView();
 	      String com_id = postVo.getCom_id();
-	      mv.setViewName("redirect:/Users/ResumeForm?com_id=" + com_id);
+	      mv.setViewName("redirect:/Company/PostForm?com_id=" + com_id);
 	      return   mv;
 	   }
-	
+	@RequestMapping("/PostView")
+	public  ModelAndView  PostView ( PostVo postVo, CompanyVo companyVo  ) {
+		CompanyVo uvo  =  companyMapper.LgetComView( companyVo );
+		PostVo rvo  =  postMapper.LgetPost( postVo );
+		ModelAndView   mv   =  new  ModelAndView();
+		mv.addObject("uvo", uvo);
+		mv.addObject("rvo", rvo);
+		mv.setViewName("company/postView");
+		return mv;
+	}
 	@RequestMapping("/SupportedList")
 	public ModelAndView supportedList(ApplyedVo applyedVo) {
 		List<ApplyedVo> applyedList = applyedMapper.getApplyedList(applyedVo);
@@ -89,13 +106,39 @@ public class CompanyController {
 		mv.setViewName("company/supportedList");
 		return mv;
 	}
-	
-	@RequestMapping("/TalentInformation")
-	public ModelAndView talentInformation() {
-		List<ApplyedVo> talentList = talentListMapper.getTalentList();
+	@RequestMapping("/PostUpdate")
+	public  ModelAndView  updateResume ( PostVo postVo  ) {   
+		postMapper.LPostUpdate( postVo );
+		ModelAndView   mv   =  new  ModelAndView();
+		String user_id = postVo.getCom_id();
+		mv.setViewName("redirect:/Company/PostForm?com_id="+ user_id);
+		return mv;
+	}
+	@RequestMapping("/CInfoedit")
+	public ModelAndView CInfoEdit(CompanyVo companyVo) {
+		CompanyVo vo = companyMapper.Pgeteditcompany(companyVo);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("talentList",talentList);
-		mv.setViewName("company/talentList");
+		mv.addObject("vo", vo);
+		mv.setViewName("company/cinfoedit");
+		return mv;
+
+	}
+	@RequestMapping("/CInfoUpdate")
+	public ModelAndView PupdateCInfo(CompanyVo companyVo) {
+		companyMapper.PupdateCInfo(companyVo);
+		ModelAndView mv = new ModelAndView();
+		String com_id = companyVo.getCom_id();
+		mv.setViewName("redirect:/Company/CInfo?com_id=" + com_id);
+		return mv;
+	}
+	@RequestMapping("/CInfoDelete")
+	public ModelAndView CInfoDelete(CompanyVo companyVo, HttpServletRequest request) {
+		companyMapper.PCInfoDelete(companyVo);
+		// 세션무효화
+		request.getSession().invalidate();
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/");
 		return mv;
 	}
 

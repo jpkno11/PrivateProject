@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.green.users.post.mapper.PostMapper">
-	<select id="getPostList">
+	<select id="LgetPostList">
 		SELECT  
 			PO_NUM,
             COM_ID,
@@ -15,6 +15,7 @@
     	 FROM  
         	POST
 	</select>
+	
 	<select id="LmainPostList">
          SELECT  
             PO_NUM,
@@ -29,6 +30,7 @@
     	 FROM  
         	POST
 	</select>
+	
 	<select id="LuserMainPostList">
        	SELECT  
             PO_NUM,
@@ -43,6 +45,7 @@
     	 FROM  
         	POST
 	</select>
+	
 	<select id="LComPostList">
        	SELECT  
             PO_NUM,
@@ -59,6 +62,7 @@
         WHERE
 			COM_ID = #{ com_id }
 	</select>
+	
 	<insert id="LinsertComPost">
 		INSERT INTO POST(
 			PO_NUM,
@@ -90,4 +94,190 @@
 		WHERE PO_NUM = #{po_num}
 	
 	</delete>
+	
+	<select id="LgetPost">
+		SELECT  
+			PO_NUM,
+			COM_ID,
+			PO_TITLE,
+			SKILL,
+			CAREER,
+			REGION,
+			PO_QUAL,
+			PO_CONTENT,
+			PO_IMAGE
+    	 FROM  
+        	POST
+        WHERE
+			PO_NUM = #{ po_num }
+	</select>
+		<select id="LComPostView">
+		SELECT  
+			PO_NUM,
+			COM_ID,
+			PO_TITLE,
+			SKILL,
+			CAREER,
+			REGION,
+			PO_QUAL,
+			PO_CONTENT,
+			PO_IMAGE
+    	 FROM  
+        	POST
+        WHERE
+			PO_NUM = #{ po_num }
+	</select>
+	
+	<update id="LPostUpdate">
+		UPDATE POST
+		SET  
+			PO_NUM = #{po_num},
+			COM_ID = #{com_id},
+			PO_TITLE = #{po_title},
+			SKILL = #{skill},
+			CAREER = #{career},
+			REGION = #{region},
+			PO_QUAL = #{po_qual},
+			PO_CONTENT = #{po_content},
+			PO_IMAGE = #{po_image}
+		  WHERE 
+			COM_ID = #{com_id} AND PO_NUM = #{po_num}
+	
+	</update>
+	<select id="getFilteredPosts">
+    SELECT  
+      P.PO_NUM,
+      P.COM_ID,
+      P.PO_TITLE,
+      P.SKILL,
+      P.CAREER,
+      P.REGION,
+      P.PO_QUAL,
+      P.PO_CONTENT,
+      P.PO_IMAGE,
+      C.COM_NAME,
+      C.COM_NUM,
+	  C.COM_BOSS,
+	  C.COM_ADR,
+	  C.COM_TELL,
+	  CR.RATING
+    FROM  
+      POST P
+    JOIN
+      COMPANY C
+    ON
+      P.COM_ID = C.COM_ID
+    LEFT JOIN
+      COMRATINGS CR
+    ON
+      P.COM_ID = CR.COM_ID
+    WHERE 
+        1=1
+        <if test="skill != null and skill != '' and skill != 'none'">
+            AND SKILL = #{skill}
+        </if>
+        <if test="career != null and career != '' and career != 'none'">
+            AND CAREER = #{career}
+        </if>
+        <if test="region != null and region != '' and region != 'none'">
+            AND REGION = #{region}
+        </if>
+    </select>
+    <select id="KgetView" resultType="com.green.users.post.domain.PostVo">
+  
+    SELECT
+      P.PO_NUM,
+	  P.COM_ID,
+	  P.PO_TITLE,
+	  P.SKILL,
+	  P.CAREER,
+	  P.REGION,
+	  P.PO_QUAL,
+	  P.PO_CONTENT,
+	  P.PO_IMAGE,
+	  C.COM_NAME
+    FROM
+      POST P
+    JOIN
+      COMPANY C
+    ON
+      P.COM_ID = C.COM_ID
+    WHERE
+      P.PO_NUM = #{ arg2 } 
+  
+  </select>
+    <select id="KgetPostList" resultType="com.green.users.post.domain.PostVo">
+    SELECT  
+      P.PO_NUM,
+      P.COM_ID,
+      P.PO_TITLE,
+      P.SKILL,
+      P.CAREER,
+      P.REGION,
+      P.PO_QUAL,
+      P.PO_CONTENT,
+      P.PO_IMAGE,
+      C.COM_NAME
+    FROM  
+      POST P
+    JOIN
+      COMPANY C
+    ON
+      P.COM_ID = C.COM_ID
+  </select>
+  
+  <select id="count">
+	SELECT
+		PO_NUM,
+		COM_ID,
+		PO_TITLE,
+		SKILL,
+		CAREER,
+		REGION,
+		PO_QUAL,
+		PO_CONTENT,
+		PO_IMAGE
+	FROM
+		POST
+	WHERE
+		PO_NUM = #{ po_num }
+  </select>
+  
+
+    <select id="LgetpagePostList">
+	   	 SELECT    
+			PO_NUM,
+			COM_ID,
+			PO_TITLE,
+			SKILL,
+			CAREER,
+			REGION,
+			PO_QUAL,
+			PO_CONTENT,
+			PO_IMAGE
+	  	 FROM      POST
+	  	 ORDER BY  PO_NUM ASC
+    </select>
+    	<select id="getpostbookList">
+	  SELECT
+	    P.PO_NUM,
+	    P.COM_ID,
+	    P.PO_TITLE,
+	    P.SKILL,
+	    P.CAREER,
+	    P.REGION,
+	    P.PO_QUAL,
+	    P.PO_CONTENT,
+	    P.PO_IMAGE,
+	    C.COM_NAME
+	  FROM
+	    POST P
+	  JOIN
+	    USERBOOK U ON P.PO_NUM = U.PO_NUM
+	  JOIN
+	    COMPANY C ON P.COM_ID = C.COM_ID
+	  WHERE
+	    U.USER_ID = #{ arg1 }
+	
+	</select>
 </mapper>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@include file="/WEB-INF/views/include/pheader.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,7 +95,7 @@ textarea {
 
 
 </style>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%@include file="/WEB-INF/views/include/pheader.jsp" %>
 </head>
 <body>
 
@@ -103,7 +103,7 @@ textarea {
 	 <div class="resume-container">
         <form action="/Users/SaveResume" method="post" enctype="multipart/form-data">
             <input type="hidden" name="user_id" value="${sessionScope.plogin.user_id}">
-            <input type="hidden" name="user_img">
+            <input type="hidden" name="user_img" value="/img/face.jpg">
             	<div class="border border-tertiary w-100 p-5 rounded shadow">
 				<h2>
 					<input type="text" placeholder="이력서 제목을 입력하세요" style="width: 700px"
@@ -116,7 +116,7 @@ textarea {
 						<div class="jh_resume_flexbox mt-3">
 							<img src="/img/face.jpg" id="imagePreview"
 								style="width: 200px; height: 250px;"
-								class="mb-2 border border-tertiary">
+								class="mb-2 border border-tertiary" name="user_img">
 							<div class="jh_resume_personal_info">
 								<div class="input-group mb-3">
 									<span
@@ -151,17 +151,12 @@ textarea {
 										value="${vo.user_id}" readonly>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				<div class="container" style="width: 85%;">
 					<div class="row justify-content-center">
 						<div class="col-md-14 mx-auto">
-							<!-- <input type="file" class="form-control mt-2" name="user_img들어갈곳"
-								onchange="chooseImage(this)" /> <br>  -->
-								
-								<span>분야 &nbsp
-								| &nbsp </span> <select name="skill">
+								<span>분야 &ensp;&ensp; </span> <select name="skill">
 								<option value="JavaScript">JavaScript</option>
 								<option value="TypeScript">TypeScript</option>
 								<option value="Java">Java</option>
@@ -197,7 +192,7 @@ textarea {
 								<input type="text" class="form-control mt-2" id="floatingInput"
 									placeholder="학력을 입력하세요" name="user_edu"
 									style="display: block;" required>
-
+							<br>
 							<div class="mt-5">
 								<h4>경력</h4>
 								<input type="text" class="form-control mt-2" id="floatingInput"
@@ -209,15 +204,20 @@ textarea {
 								<textarea name="user_intro" class="w-100 opacity-50" rows="10"
 									placeholder="내용을 입력하세요"></textarea>
 							</div>
-							<button type="submit" class="btn btn-primary" >저장</button>
-							<button type="submit" class="btn btn-primary">취소</button>
+							<button type="submit" class="btn btn-primary" onclick="showAlert()" >저장</button>
+							<button type="submit" class="btn btn-primary" onclick="location.href=`/Users/ResumeForm?user_id=${ sessionScope.plogin.user_id }`">취소</button>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 		</form>
 	</div>
-
+	<script>
+	  function showAlert() {
+	    alert("이력서가 등록되었습니다");
+	  }
+	</script>
 </body>
 </html>

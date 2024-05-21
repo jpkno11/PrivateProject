@@ -43,25 +43,20 @@
      AND
       PT.COM_ID = CP.COM_ID
 </select>
-
-     
-<!--   	SELECT  -->
-<!-- 	    CP.COM_NAME COM_NAME, -->
-<!-- 	    PT.PO_TITLE PO_TITLE, -->
-<!-- 	    PT.CAREER CAREER, -->
-<!-- 	    RS.RE_NUM RE_NUM, -->
-<!-- 	    AP.AP_DATE AP_DATE, -->
-<!-- 	    AP.RESULT RESULT -->
-<!-- 		FROM -->
-<!-- 		    APPLY AP -->
-<!-- 		JOIN  -->
-<!-- 		    POST PT ON ap.po_num = pt.po_num -->
-<!-- 		JOIN  -->
-<!-- 		    RESUME RS ON ap.re_num = rs.re_num -->
-<!-- 		JOIN -->
-<!-- 		    COMPANY CP ON pt.com_id = cp.com_id -->
-<!-- 		JOIN -->
-<!-- 		    USERS U ON rs.user_id = u.user_id -->
-<!-- 		WHERE -->
-<!-- 		    U.USER_ID = #{arg1} -->
+  <!-- <insert id="insertResumeApply" parameterType="com.green.users.resume.domain.ResumeVo"> -->
+  <insert id="KinsertResumeApply" parameterType="com.green.users.apply.domain.ApplyVo">
+      INSERT INTO APPLY (
+	      PO_NUM,
+		  RE_NUM,
+		  RE_TITLE,
+		  PO_TITLE,
+		  RESULT
+	  ) VALUES (
+		  #{ po_num },
+	 	  #{ re_num },
+		  #{ re_title },
+		  #{ po_title },
+		  #{ result }
+	  )
+  </insert>
 </mapper>

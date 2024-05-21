@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -130,6 +129,7 @@ public class HomeController {
 		return mv;
 		
 	}
+	
 		
 	// 기업-회원가입
 	@RequestMapping("/CWrite")
@@ -150,17 +150,17 @@ public class HomeController {
 		session.invalidate();
 		return  "user/login";
 	}
-
 	 //CS
 	@RequestMapping("/Cs")
 	public ModelAndView cs() {
 	   ModelAndView mv = new ModelAndView();	
 		mv.setViewName("user/cs");
 		return mv;
-	}	 
-	
-   }
+	}	
 
+	
+		
+	   }
 	
 
 

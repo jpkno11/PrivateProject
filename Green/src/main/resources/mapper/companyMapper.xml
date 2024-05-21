@@ -32,4 +32,87 @@
  	WHERE  COM_ID = #{com_id}
 	
 	</select>
+	<select id="LgetComView">
+	SELECT 
+		COM_ID,
+		COM_PW,
+		COM_NAME,
+		COM_NUM,
+		COM_BOSS,
+		COM_ADR,
+		COM_TELL,
+		COM_DATE
+   	FROM
+      COMPANY
+ 	WHERE  COM_ID = #{com_id}
+	</select>
+	<select id="LCheckGetCom_id">
+	SELECT 
+		COM_ID,
+		COM_PW,
+		COM_NAME,
+		COM_NUM,
+		COM_BOSS,
+		COM_ADR,
+		COM_TELL,
+		COM_DATE
+   	FROM
+      COMPANY
+ 	WHERE  COM_ID = #{com_id}
+	</select>
+	
+	  <select id="KgetPost">
+  
+    SELECT 
+	  PO_NUM,
+	  COM_ID,
+	  PO_TITLE,
+	  SKILL,
+	  CAREER,
+	  REGION,
+	  PO_QUAL,
+	  PO_CONTENT,
+	  PO_IMAGE
+	FROM
+	  POST
+	WHERE
+	  PO_NUM = #{ po_num }
+	</select>
+		<select id="Pgeteditcompany">
+		SELECT
+		COM_ID,
+		COM_PW,
+		COM_NAME,
+		COM_NUM,
+		COM_BOSS,
+		COM_ADR,
+		COM_TELL,
+		COM_DATE
+		FROM
+		COMPANY
+		WHERE
+		COM_ID = #{ com_id }
+
+	</select>
+	<update id="PupdateCInfo">
+		UPDATE COMPANY
+		SET
+		COM_ID = #{ com_id },
+		COM_PW = #{ com_pw },
+		COM_NAME = #{ com_name},
+		COM_NUM = #{ com_num },
+		COM_BOSS = #{ com_boss },
+		COM_ADR = #{ com_adr },
+		COM_TELL = #{ com_tell },
+		COM_DATE = #{ com_date }
+		WHERE
+		COM_ID = #{com_id}
+	</update>
+	
+	<delete id="PCInfoDelete">
+		DELETE
+		FROM COMPANY
+		WHERE COM_ID = #{com_id}
+
+	</delete>
 </mapper>

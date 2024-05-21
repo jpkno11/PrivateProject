@@ -88,12 +88,10 @@ hr {
   <!-- 사이드 바 -->
 	<div class="container d-flex">
 		<div class="list-group mx-2">
-			<a href="/Company/Info?com_id=${ sessionScope.clogin.com_id }"
-				class="list-group-item   shadow" style="width: 150px;">회사정보</a> <a
-				href="/Company/PostForm?com_id=${ sessionScope.clogin.com_id }"
-				class="list-group-item hs_list_effect shadow">공고 관리</a> <a href="#"
-				class="list-group-item shadow">받은 이력서</a> <a href=""
-				class="list-group-item shadow">스크랩</a>
+			<a href="/Company/CInfo?com_id=${ sessionScope.clogin.com_id }" class="list-group-item   shadow" style="width: 150px;">회사정보</a>
+			<a href="/Company/PostForm?com_id=${ sessionScope.clogin.com_id }" class="list-group-item hs_list_effect shadow">공고관리</a>
+			<a href="/Company/SupportedList?com_id=${ sessionScope.clogin.com_id }" class="list-group-item shadow">받은 이력서 관리</a>
+			<a href="#"class="list-group-item shadow">스크랩</a>
 		</div>
 
 		<!-- 페이지 내용 -->
@@ -111,11 +109,9 @@ hr {
 							style="display: flex; justify-content: space-between">
 
 							<div class="postList_st" style="">
-								<a
-									href="/Company/PostDetail?po_num=${Po.po_num}&com_id=${ sessionScope.clogin.com_id }">
+								<a href="/Company/PostView?po_num=${Po.po_num}&com_id=${ sessionScope.clogin.com_id }">
 									${Po.po_title} </a>
 							</div>
-
 							<form
 								action="/Company/PostDelete?po_num=${Po.po_num}&com_id=${ sessionScope.clogin.com_id }"
 								id="delete_button_${status.count}" method="POST">

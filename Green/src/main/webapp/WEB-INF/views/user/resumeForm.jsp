@@ -4,67 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- 부트스트랩 CDN 링크 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- 
+<title>Jik Job</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <style>
-
-   /* 사이드바 */
-    .sidenav {
-      background-color: #f1f1f1;
-      position: fixed;
-      width: 200px;
-      height: 100%;
-      margin-left: -20px;
-      margin-top:50px
-    }
-    /* 본문 */
-    .page {
-     margin-top:50px;
-     margin-left: 250px;
-    }
-/* 전체 페이지에 대한 기본 스타일 */
-body {
-    font-family: 'Noto Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-}
-
-/* 이력서 관리 섹션 스타일 */
-.mx-2 {
-    margin-left: 2rem;
-    margin-right: 2rem;
-}
-
-.pb-4 {
-    padding-bottom: 4rem;
-}
-
-.w-100 {
-    width: 100%;
-}
-
-.border {
-    border: 1px solid #808080;
-    width: 600px; /* 너비 */
-  	height: 500px; /* 높이 */
-    border-radius: 5px; /* 모서리 둥글기 */
-}
-.container {
-  display: flex;
-  justify-content: center; /* 수평 중앙 정렬 */
-  align-items: center; /* 수직 중앙 정렬 */
-  height: 100vh; /* 부모 요소의 높이를 브라우저 창의 높이와 동일하게 설정 */
-}
-
-
-.border-tertiary {
-    border-color: #6c757d; /* 삼차 색상 */
-}
+	
 
 .p-5 {
     padding: 3rem;
@@ -143,15 +86,13 @@ hr {
   <%@include file="/WEB-INF/views/include/pheader.jsp" %>
   
   <!-- 사이드 바 -->
-  <nav class="col-sm-3 sidenav">
-      <h4> 개인정보</h4>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="/Users/Info?user_id=${ sessionScope.plogin.user_id }">개인정보</a></li>
-        <li><a href="/Users/ResumeForm?user_id=${ sessionScope.plogin.user_id }">이력서 관리</a></li>
-        <li><a href="#">입사지원 관리</a></li>
-        <li><a href="#">스크랩</a></li>
-      </ul>
-    </nav>
+    <div class="container d-flex">
+		<div class="list-group mx-2">
+			<a href="/Users/Info?user_id=${ sessionScope.plogin.user_id }" class="list-group-item   shadow" style="width: 150px;">개인정보</a>
+			<a href="/Users/ResumeForm?user_id=${ sessionScope.plogin.user_id }" class="list-group-item hs_list_effect shadow">이력서 관리</a>
+			<a href="/Users/ApplyList?user_id=${ sessionScope.plogin.user_id }" class="list-group-item shadow">입사지원 관리</a>
+			<a href="/Users/BookmarkList?user_id=${ sessionScope.plogin.user_id }" class="list-group-item shadow">스크랩</a>
+	</div>
 
   <!-- 페이지 내용 -->
             <div class="container">
@@ -163,36 +104,33 @@ hr {
 
                     <div class="jh_resume mt-5">
                         <button class="jh_resume_button mb-5 rounded jm_card"
-                            onclick="location.href=`/Users/ResumeMake?user_id=${ sessionScope.pLogin.user_id }`">➕ 새 이력서 등록</button>
+                            onclick="location.href=`/Users/ResumeMake?user_id=${ sessionScope.plogin.user_id }`">이력서 등록</button>
                         <c:forEach items="${resumeList}" var="Re">
 
                             <div id="resume_del" class="jh_resume_content mt-2 mb-2"
                                 style="display: flex; justify-content: space-between">
                                 <div class="d-flex align-items-center">
-                                    <a href="/Users/ResumeDetail?re_num=${Re.re_num}&user_id=${ sessionScope.pLogin.user_id }"> ${Re.user_title} </a>
+                                    <a href="/Users/ResumeView?re_num=${Re.re_num}&user_id=${ sessionScope.plogin.user_id }"> ${Re.re_title} </a>
                                 </div>
-                                <div>
-                                   <c:choose>
-                                        <c:when test="${resume.publish == true}">
-                                            <button type="button" class="btn btn-success">공개중</button>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <button type="button" class="btn btn-warning">비공개중</button>
-                                        </c:otherwise>
-                                    </c:choose>
-      							 <form action="/Users/DeleteResume?re_num=${Re.re_num}&user_id=${ sessionScope.login.user_id }"
-       							 id="delete_resume_${status.count}"  method="POST"> 
-       							<button type="submit" class="btn btn-dark" id="delete_resume_${status.count}"> 삭제
-       					</button>
-       				</form>
-                                </div>
+
+								<form
+									action="/Users/ReusmeDelete?re_num=${Re.re_num}&user_id=${ sessionScope.plogin.user_id }"
+									id="delete_resume_${status.count}" method="POST">
+									<button type="submit" class="btn btn-dark"
+										id="delete_resume_${status.count}" onclick="deleteAlert()" >삭제</button>
+							    </form>
+								</div>
                             </div>
                         </c:forEach>
                     </div>
                 </div>
             </div>
+       </div>
     <!-- 내용 추가 -->
-
-
+	<script>
+	  function deleteAlert() {
+		    alert("이력서가 삭제되었습니다");
+		  }
+	</script>
 </body>
 </html>

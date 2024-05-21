@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.company.applyed.mapper.ApplyedMapper">
+<select   id="getApplyedList" >
+  SELECT
+     PT.po_num   
+  	, PT.po_title
+  	, RE.re_title
+    , RE.user_id
+    , AP.AP_DATE
+
+    , AP.RESULT
+   
+   FROM  
+      APPLY AP, RESUME RE, COMPANY CP, POST PT
+    WHERE
+      CP.COM_ID = #{ com_id }
+     AND
+      CP.COM_ID = PT.COM_ID
+     AND
+      PT.PO_NUM = AP.PO_NUM
+     AND
+      AP.RE_NUM = RE.RE_NUM
+</select>
+</mapper>
+

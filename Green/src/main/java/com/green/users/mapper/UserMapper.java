@@ -1,5 +1,7 @@
 package com.green.users.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.green.company.domain.CompanyVo;
@@ -19,6 +21,15 @@ public interface UserMapper {
 	UserVo LgetUser(UserVo userVo);
 
 	UserVo Pgetuser(UserVo userVo);
+
+	List<UserVo> LCheckGetUser_id(UserVo userVo);
+
+	UserVo Pgetedituser(UserVo userVo);
+
+	void PupdateInfo(UserVo userVo);
+
+	void PInfoDelete(UserVo userVo);
+
 
 
 

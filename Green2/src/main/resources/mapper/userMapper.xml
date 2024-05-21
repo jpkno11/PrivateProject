@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.users.mapper.UserMapper">
+
+	<select id="pLogin">
+		SELECT
+		USER_ID,
+		USER_PW
+		FROM USERS
+		WHERE
+		USER_ID = #{arg0}
+		AND
+		USER_PW = #{arg1}
+	</select>
+
+	<insert id="insertPUser">
+		INSERT INTO USERS (
+		USER_ID,
+		USER_NAME,
+		USER_PW,
+		USER_TELL,
+		USER_BIRTH,
+		USER_ADR
+		)
+		VALUES(
+		#{user_id},
+		#{user_name},
+		#{user_pw},
+		#{user_tell},
+		#{user_birth},
+		#{user_adr}
+		)
+
+	</insert>
+
+	<select id="cLogin">
+		SELECT
+		COM_ID,
+		COM_PW
+		FROM COMPANY
+		WHERE
+		COM_ID = #{arg0}
+		AND
+		COM_PW = #{arg1}
+	</select>
+
+	<insert id="insertCUser">
+		INSERT INTO COMPANY (
+		COM_ID,
+		COM_PW,
+		COM_NAME,
+		COM_NUM,
+		COM_BOSS,
+		COM_ADR,
+		COM_TELL
+		)
+		VALUES(
+		#{com_id},
+		#{com_pw},
+		#{com_name},
+		#{com_num},
+		#{com_boss},
+		#{com_adr},
+		#{com_tell}
+		)
+
+	</insert>
+	<select  id = "LgetUser">
+	SELECT
+		USER_ID,
+		USER_NAME,
+		USER_PW,
+		USER_TELL,
+		TO_CHAR(USER_BIRTH, 'YYYY.MM.DD') USER_BIRTH,
+		USER_ADR,
+		USER_DATE
+	FROM
+		USERS
+	WHERE
+		USER_ID = #{ user_id }  
+	          
+	</select>
+    <select id="Pgetuser">
+ 	 SELECT 
+      USER_ID,
+      USER_NAME,
+      USER_PW,
+      USER_TELL,
+      USER_BIRTH,
+      USER_ADR,
+      USER_DATE
+   	FROM
+      USERS
+ 	WHERE  USER_ID = #{user_id}
+   
+   </select>
+
+</mapper>

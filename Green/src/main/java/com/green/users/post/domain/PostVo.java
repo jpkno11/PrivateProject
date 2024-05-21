@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PostVo {
 
-	private Long po_num;
+	private int po_num;
 	private String com_id;
 	private String po_title;
 	private String skill;
@@ -19,4 +19,11 @@ public class PostVo {
 	private String po_content;
 	private String po_image;
 	
+	private String com_name;
+	private String com_boss;
+	private String com_num;
+	private String com_adr;
+	private String com_tell;
+	
+	private int rating;
 }

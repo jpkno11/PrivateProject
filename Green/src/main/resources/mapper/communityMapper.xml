@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.community.mapper.CommunityMapper">
+	<select id="getCBoardPagingList">
+		SELECT  
+    	    CCM.ccomu_bno
+    	  , CCM.ccomu_title 
+    	  , CCM.COM_ID    	  
+    	  , CCM.CCOMU_HIT
+    	  , CCM.CCOMU_DATE
+    FROM  
+     		  C_COMMUNITY CCM
+   
+    ORDER BY  ccomu_bno DESC
+	</select>
+	<select id="getcommunityVo">	
+		SELECT  
+    	    CCM.ccomu_bno
+    	  , CCM.ccomu_title 
+    	  , CCM.COM_ID    	
+    	  , CCM.CCOMU_CONTENT  
+    	  , CCM.CCOMU_HIT
+    	  , CCM.CCOMU_DATE
+    	  
+    FROM  
+     		  C_COMMUNITY CCM
+   	WHERE 
+    	CCM.CCOMU_BNO = #{ccomu_bno}
+	</select>
+	<select id="getCBoardCommentList">
+		SELECT  
+    	   CMM.CCOMU_BNO
+        ,CMM.CCOMM_ID
+        ,CMM.CCOMM_BODY
+        ,CMM.COM_ID
+        ,CMM.CCOMU_GOOD
+    FROM  
+     		  C_COMMENTS CMM
+   	WHERE 
+    	CMM.CCOMU_BNO = #{ccomu_bno}
+    order by 
+        CCOMM_ID asc
+	</select>
+	
+	<update id="incHit">
+    	UPDATE C_COMMUNITY
+    	SET CCOMU_HIT = ccomu_hit + 1
+    	WHERE ccomu_bno = #{ccomu_bno} 
+    </update>
+	
+	<insert id="insertBoard">
+		 INSERT INTO C_COMMUNITY (
+     CCOMU_BNO
+    ,CCOMU_TITLE
+    ,CCOMU_CONTENT
+    ,COM_ID
+)   VALUES (
+    ( SELECT (NVL(MAX(CCOMU_BNO), 0)+1) FROM C_COMMUNITY ),
+    #{ ccomu_title },
+    #{ ccomu_content },
+    #{ com_id }   
+)
+	</insert>
+	<insert id="insertComment">
+		insert into C_COMMENTS(
+		    CCOMU_BNO,
+		    CCOMM_ID,
+		    CCOMM_BODY,
+		    COM_ID,
+		   	CCOMU_GOOD
+		)
+		values (
+		    #{ccomu_bno},
+		    (SELECT (NVL(MAX(CCOMM_ID), 0)+1) FROM C_COMMENTS ),
+		    #{ccomm_body},
+		    #{com_id},
+		    0 
+		)
+	</insert>
+	<update id="incrementLike">
+	  UPDATE C_COMMENTS
+    SET CCOMU_GOOD = CCOMU_GOOD + 1
+    WHERE CCOMU_BNO = #{ccomu_bno} 
+    AND   CCOMM_ID = #{ccomm_id}
+	</update>
+</mapper>
